@@ -35,7 +35,7 @@ class BottomNavigator extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Container(
             margin: EdgeInsets.only(bottom: 5),
-            child: Icon(Icons.add),
+            child: Icon(Icons.add_rounded),
           ),
           label: 'Add New Task',
         ),

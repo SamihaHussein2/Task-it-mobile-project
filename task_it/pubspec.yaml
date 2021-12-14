@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
   gradient_app_bar: ^0.1.3
+  provider: ^6.0.1
 
 
 
