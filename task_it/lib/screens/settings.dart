@@ -1,31 +1,27 @@
-import 'package:flutter/material.dart';
+// // ignore_for_file: prefer_const_constructors
 
-import '/utils/drawer.dart';
+// import 'package:flutter/material.dart';
 
-class Settings extends StatefulWidget {
-  Settings({Key? key, this.title}) : super(key: key);
+// import '/utils/drawer.dart';
 
-  final String title; 
+// class Settings extends StatefulWidget {
+//   Settings({Key? key, this.title}) : super(key: key);
+//   final String title;
 
-  @override
-  _SettingsState createState()=> _SettingsState(); 
-}
+//   @override
+//   _SettingsState createState() => _SettingsState();
+// }
 
-
-class _SettingsState extends State<Settings>{
-  @override
-  Widget build(BuildContext context){
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title), 
-        actions: <Widget>[
-          new IconButton(
-            icon: Icon(Icons.settings), 
-            tooltip: 'Settings', 
-            
-          )
-        ]
-      ),
-    )
-  }
-}
+// class _SettingsState extends State<Settings> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(title: Text(widget.title), actions: <Widget>[
+//         new IconButton(
+//           icon: Icon(Icons.settings),
+//           tooltip: 'Settings',
+//         )
+//       ]),
+//     );
+//   }
+// }

@@ -4,9 +4,25 @@ import '/utils/custom_colors.dart';
 import '/utils/bottom_navigator.dart';
 
 class Homepage extends StatefulWidget {
+  // final FirebaseUser user;
+  // Homepage({Key? key, this.user}) : super(key: key);
+
   Homepage({Key? key}) : super(key: key);
 
-  _HomepageState createState() => _HomepageState();
+  @override
+  State<StatefulWidget> createState() => _HomepageState();
+}
+
+class TaskItApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: "Task It",
+      home: Homepage(),
+      theme: new ThemeData(primarySwatch: Colors.blue),
+    );
+  }
 }
 
 class _HomepageState extends State<Homepage> {

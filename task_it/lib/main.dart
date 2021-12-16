@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:task_it/screens/homepage.dart';
 import 'package:task_it/utils/custom_colors.dart';
 
@@ -13,6 +14,12 @@ class TaskItApp extends StatefulWidget {
 class _TaskItAppState extends State<TaskItApp> {
   @override
   void initState() {
+    SystemChrome.setSystemUIOverlayStyle(
+      SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent, //top bar color
+      ),
+    );
+    // SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
     super.initState();
   }
 
