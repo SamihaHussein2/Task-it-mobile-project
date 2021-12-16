@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_it/view/Login.dart';
-import 'package:task_it/view/SignUp.dart';
+import 'package:task_it/screens/Intro/login.dart';
+import 'package:task_it/screens/Intro/signup.dart';
 import 'package:task_it/spalsh.dart';
+// ignore_for_file: file_names
 
-class WelcomePage extends StatelessWidget {
+class welcomepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,7 +69,7 @@ class WelcomePage extends StatelessWidget {
                       color: const Color(0xffee3f23),
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => SignUp()));
+                            MaterialPageRoute(builder: (context) => signup()));
                       },
                       //define shape el button
                       shape: RoundedRectangleBorder(
@@ -93,10 +94,8 @@ class WelcomePage extends StatelessWidget {
                       height: 60,
                       //color: const Color(0xffee3f23),
                       onPressed: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => LoginPage()));
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => login()));
                       },
                       //define shape el button
                       shape: RoundedRectangleBorder(

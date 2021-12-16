@@ -1,9 +1,24 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:task_it/view/Welcome_Page.dart';
+import 'package:task_it/screens/Intro/welcome_page.dart';
 
-class Splash extends StatelessWidget {
+class Splash extends StatefulWidget {
+  @override
+  State<Splash> createState() => _SplashState();
+}
+
+class _SplashState extends State<Splash> {
+  @override
+  void initState() {
+    super.initState();
+    _navigatetohome();
+  }
+
+  _navigatetohome() async {
+    await Future.delayed(Duration(milliseconds: 2500), () {});
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => welcomepage()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +26,15 @@ class Splash extends StatelessWidget {
             alignment: Alignment.center,
             child: Column(
               children: [
-                Image.asset("assets/logo/logo-icon.png"),
+                TweenAnimationBuilder(
+                  duration: Duration(seconds: 1),
+                  tween: Tween<double>(begin: 0, end: 2 * 3.14),
+                  builder: (_, double angle, __) {
+                    return Transform.rotate(
+                        angle: angle,
+                        child: Image.asset("assets/logo/logo-icon.png"));
+                  },
+                ),
                 Image.asset(
                   "assets/logo/OUR-LOGO.png",
                   width: 70,
