@@ -1,6 +1,8 @@
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 // ignore: use_key_in_widget_constructors
@@ -28,7 +30,9 @@ class LeaderBoardScreen extends StatelessWidget{
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Classify(), Classify(), Classify()
+              Text('Today'),
+              Classify(),
+              Text('Month')
             ],
           ),
           
