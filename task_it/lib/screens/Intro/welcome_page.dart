@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_it/screens/Intro/login.dart';
 import 'package:task_it/screens/Intro/signup.dart';
+import 'package:task_it/screens/user_account.dart';
 import 'package:task_it/spalsh.dart';
 // ignore_for_file: file_names
 
@@ -127,7 +128,7 @@ class welcomepage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     //change page to the homepage
-                                    builder: (context) => Splash()));
+                                    builder: (context) => account()));
                           },
                       ),
                     )
