@@ -1,7 +1,6 @@
 
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'dart:html';
 
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,6 @@ class LeaderBoardScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      // ignore: prefer_const_constructors
       decoration: BoxDecoration(
       color: Colors.teal[300],
       ),
@@ -51,7 +49,14 @@ class Classify extends StatelessWidget {
       decoration: BoxDecoration(
         color: Colors.teal[100],
         borderRadius: BorderRadius.circular(15.0),
-      )
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Week')
+        ],
+      ),
     );
   }
   
