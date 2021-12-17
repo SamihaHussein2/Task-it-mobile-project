@@ -1,53 +1,97 @@
 import 'package:flutter/material.dart';
 import '/screens/homepage.dart';
-import 'custom_colors.dart';
+import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
 
-class BottomNavigator extends StatelessWidget {
-  final int bottomNavBarIndex;
-  final BuildContext context;
-  const BottomNavigator(this.context, this.bottomNavBarIndex);
+class BottomNavBar extends StatefulWidget {
+  const BottomNavBar({Key? key}) : super(key: key);
 
-  void onSelectedTab(int index) {
-    Navigator.of(context).push(
-      MaterialPageRoute<Null>(builder: (BuildContext context) {
-        return Homepage();
-      }),
-    );
+  @override
+  _BottomNavBarState createState() => _BottomNavBarState();
+}
+
+class _BottomNavBarState extends State<BottomNavBar> {
+  late PageController _pageController;
+  int selectedIndex = 0;
+  bool _colorful = false;
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: selectedIndex);
+  }
+
+  void onButtonPressed(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+    _pageController.animateToPage(selectedIndex,
+        duration: const Duration(milliseconds: 400), curve: Curves.easeOutQuad);
   }
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: bottomNavBarIndex,
-      type: BottomNavigationBarType.fixed,
-      selectedFontSize: 10,
-      selectedLabelStyle: TextStyle(color: CustomColors.BlueDark),
-      selectedItemColor: CustomColors.BlueDark,
-      unselectedFontSize: 10,
-      items: [
-        BottomNavigationBarItem(
-          icon: Container(
-            margin: EdgeInsets.only(bottom: 5),
-            child: Icon(Icons.home),
+    return Scaffold(
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: _pageController,
+              children: _listOfScreens,
+            ),
           ),
-          label: 'Home',
-        ),
-        BottomNavigationBarItem(
-          icon: Container(
-            margin: EdgeInsets.only(bottom: 5),
-            child: Icon(Icons.add_rounded),
-          ),
-          label: 'Add New Task',
-        ),
-        BottomNavigationBarItem(
-          icon: Container(
-            margin: EdgeInsets.only(bottom: 5),
-            child: Icon(Icons.group_work_outlined),
-          ),
-          label: 'Tasks',
-        ),
-      ],
-      onTap: onSelectedTab,
+        ],
+      ),
+      bottomNavigationBar: _colorful
+          ? SlidingClippedNavBar.colorful(
+              backgroundColor: Colors.white,
+              onButtonPressed: onButtonPressed,
+              iconSize: 30,
+              // activeColor: const Color(0xFF01579B),
+              selectedIndex: selectedIndex,
+              barItems: <BarItem>[
+                BarItem(
+                  icon: Icons.home,
+                  title: 'Home',
+                  activeColor: Colors.blue,
+                  inactiveColor: Colors.orange,
+                ),
+                BarItem(
+                  icon: Icons.add,
+                  title: 'New Task',
+                  activeColor: Colors.yellow,
+                  inactiveColor: Colors.green,
+                ),
+                BarItem(
+                  icon: Icons.category,
+                  title: 'Tasks',
+                  activeColor: Colors.blue,
+                  inactiveColor: Colors.red,
+                ),
+              ],
+            )
+          : SlidingClippedNavBar(
+              backgroundColor: Colors.white,
+              onButtonPressed: onButtonPressed,
+              iconSize: 30,
+              activeColor: const Color(0xFF01579B),
+              selectedIndex: selectedIndex,
+              barItems: <BarItem>[
+                BarItem(
+                  icon: Icons.home,
+                  title: 'Home',
+                ),
+                BarItem(
+                  icon: Icons.add_rounded,
+                  title: 'New Task',
+                ),
+                BarItem(
+                  icon: Icons.category,
+                  title: 'Tasks',
+                ),
+              ],
+            ),
     );
   }
 }
+
+List<Widget> _listOfScreens = [];
