@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_it/screens/Intro/welcome_page.dart';
-import 'package:task_it/screens/homepage.dart';
+import 'package:task_it/screens/homepage/homepage.dart';
 import 'package:task_it/screens/leaderboard.dart';
 import 'package:task_it/spalsh.dart';
 
