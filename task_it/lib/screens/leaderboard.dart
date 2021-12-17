@@ -29,7 +29,7 @@ class LeaderBoardScreen extends StatelessWidget{
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text('Today'),
-              Classify(),
+              Category(),
               Text('Month')
             ],
           ),
@@ -40,7 +40,7 @@ class LeaderBoardScreen extends StatelessWidget{
   }
 }
 
-class Classify extends StatelessWidget {
+class Category extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
