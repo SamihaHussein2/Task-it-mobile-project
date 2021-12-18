@@ -6,4 +6,5 @@ class CustomColors {
     static const Cultured = const Color(0xF2F2F4); //very light blue/violet
     static const YellowOrange = const Color(0xFFB156); //yellow-y orange 
     static const White = const Color(0xFFFFFF); //whiteyy
+  static const Color BackgroundColor = Colors.white;
 }
