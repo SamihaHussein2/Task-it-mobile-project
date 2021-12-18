@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_it/screens/Intro/signup.dart';
 import 'package:task_it/screens/Intro/welcome_page.dart';
 import 'package:task_it/screens/user_account.dart';
 import 'package:task_it/spalsh.dart';

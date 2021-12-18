@@ -13,7 +13,10 @@ class login extends StatelessWidget {
         resizeToAvoidBottomInset:
             false, // to pervent bottom overflowed when the keyboard appears
         backgroundColor: Colors.white,
-        appBar: register_appbar(appBar: AppBar()),
+        appBar: register_appbar(
+          appBar: AppBar(),
+          title: "Login",
+        ),
         body: Container(
           alignment: Alignment.center,
           height: MediaQuery.of(context).size.height,

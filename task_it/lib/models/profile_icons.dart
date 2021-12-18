@@ -26,7 +26,7 @@ final options = [
   Option(
     icon: Icon(Icons.emoji_events_rounded, size: 30.0),
     title: 'Trophies',
-    location: LeaderBoardScreen(), //change to trophies page
+    location: Splash(), //change to trophies page
   ),
   Option(
     icon: Icon(Icons.person_add_alt_1, size: 30.0),

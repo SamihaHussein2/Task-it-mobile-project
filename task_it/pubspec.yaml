@@ -30,12 +30,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  hexcolor: ^2.0.5
-  provider: ^6.0.1
-  sliding_clipped_nav_bar: ^2.0.1
-
-
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -67,9 +61,9 @@ flutter:
   - assets/leaderboard/Top2.jpg
   - assets/leaderboard/Top3.jpg
   - assets/leaderboard/crown.png
-  - assets/leaderboard/no1.png
-  - assets/leaderboard/no2.png
-  - assets/leaderboard/no3.png
+  - assets/logo/logo-final.png
+  - assets/logo/OUR-LOGO.png
+  
 
   # To add assets to your application, add an assets section, like this:
   # assets:
