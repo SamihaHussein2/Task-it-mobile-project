@@ -58,10 +58,16 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets: 
-  - assets/leaderboard/Top1.jpg
+   - assets/leaderboard/Top1.jpg
   - assets/leaderboard/Top2.jpg
   - assets/leaderboard/Top3.jpg
   - assets/leaderboard/crown.png
+  - assets/leaderboard/no1.png
+  - assets/leaderboard/no2.png
+  - assets/leaderboard/no3.png
+  - assets/leaderboard/4.jpg
+  - assets/leaderboard/5.jpg
+  - assets/leaderboard/6.jpg
   - assets/logo/logo-final.png
   - assets/logo/OUR-LOGO.png
   
