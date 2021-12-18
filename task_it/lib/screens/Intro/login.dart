@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:task_it/components/custom_colors.dart';
 import 'package:task_it/screens/Intro/appbar_register.dart';
 import 'package:task_it/spalsh.dart';
 import 'package:task_it/screens/Intro/signup.dart';
@@ -25,11 +26,11 @@ class login extends StatelessWidget {
             children: [
               //Padding(padding: EdgeInsets.only(top: 5)),
               SizedBox(
-                height: 50,
+                height: 20,
               ),
               Image.asset(
                 "assets/logo/logo-final.png",
-                height: 100,
+                height: 150,
                 width: 300,
               ),
               Column(
@@ -46,10 +47,11 @@ class login extends StatelessWidget {
                             fillColor: Color(0xff2179ae),
                             prefixIcon: Icon(
                               Icons.email_sharp,
-                              color: Color(0xff2179ae),
+                              color: CustomColors.Midnight,
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xffee3f23)),
+                              borderSide:
+                                  BorderSide(color: CustomColors.YellowOrange),
                             ),
                           ),
                         ),
@@ -62,10 +64,11 @@ class login extends StatelessWidget {
                             labelText: "Password",
                             prefixIcon: Icon(
                               Icons.password,
-                              color: Color(0xff2179ae),
+                              color: CustomColors.Midnight,
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: Color(0xffee3f23)),
+                              borderSide:
+                                  BorderSide(color: CustomColors.YellowOrange),
                             ),
                           ),
                         ),
@@ -78,7 +81,7 @@ class login extends StatelessWidget {
                         MaterialButton(
                           minWidth: 300, //badal el width fl material app
                           height: 60,
-                          color: const Color(0xffee3f23),
+                          color: CustomColors.YellowOrange,
                           onPressed: () {
                             Navigator.push(
                                 context,
@@ -95,7 +98,7 @@ class login extends StatelessWidget {
                           child: Text(
                             "Login",
                             style: TextStyle(
-                              color: Colors.white,
+                              color: CustomColors.Midnight,
                               fontSize: 18,
                             ),
                           ),
@@ -112,7 +115,7 @@ class login extends StatelessWidget {
                               text: TextSpan(
                                 text: "Sign up",
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: CustomColors.Midnight,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 recognizer: TapGestureRecognizer()

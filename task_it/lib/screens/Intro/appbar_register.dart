@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_it/components/custom_colors.dart';
 import 'package:task_it/screens/Intro/welcome_page.dart';
 
 class register_appbar extends StatelessWidget implements PreferredSizeWidget {
@@ -14,7 +15,7 @@ class register_appbar extends StatelessWidget implements PreferredSizeWidget {
         title: Text(
           title,
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: const Color(0xffee3f23)),
+              fontWeight: FontWeight.bold, color: CustomColors.Midnight),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -26,7 +27,7 @@ class register_appbar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: const Icon(Icons.arrow_back),
           iconSize: 20,
-          color: Color(0xffee3f23),
+          color: CustomColors.Midnight,
         ));
   }
 
