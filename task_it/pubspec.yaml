@@ -30,7 +30,7 @@ dependencies:
   #settings_ui: ^0.7.0 #ready made settings page
   flutter:
     sdk: flutter
-  gradient_app_bar: ^0.1.3
+  hexcolor: ^2.0.5
   provider: ^6.0.1
   sliding_clipped_nav_bar: ^2.0.1
 
