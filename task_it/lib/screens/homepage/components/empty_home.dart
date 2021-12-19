@@ -1,1 +1,0 @@
-// Appears for newly registered users or users who are not yet registered
