@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:task_it/components/custom_colors.dart';
-import 'package:task_it/models/profile_icons.dart';
-import 'package:task_it/screens/Intro/login.dart';
-import 'package:task_it/screens/Intro/welcome_page.dart';
-import 'package:task_it/screens/homepage/homepage.dart';
-import 'package:task_it/spalsh.dart';
+import '/components/custom_colors.dart';
+import '/models/profile_icons.dart';
+import '/screens/Intro/welcome_page.dart';
+import '/spalsh.dart';
 
-class account extends StatelessWidget {
+class Account extends StatelessWidget {
   //const account({Key? key}) : super(key: key);
 
   @override
@@ -172,13 +170,6 @@ class account extends StatelessWidget {
               child: ListTile(
                 title: Text("Logout"),
                 leading: Icon(Icons.logout),
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          //change page to the homepage
-                          builder: (context) => login()));
-                },
               ),
             )
           ],

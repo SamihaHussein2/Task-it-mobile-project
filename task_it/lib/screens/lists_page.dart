@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:task_it/components/custom_colors.dart';
+import '/components/custom_colors.dart';
 
 // void main() {
 //   runApp(const List());
@@ -227,6 +227,7 @@ Widget _addTaskForm() {
                       contentPadding: EdgeInsets.fromLTRB(0, 5.5, 0, 0),
                       labelStyle: TextStyle(),
                       labelText: 'priority'),
+                  onChanged: (String? value) {},
                   // onChanged: (value) {
                   //   setState(() {
                   //     task.priority = value;
