@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:task_it/screens/Intro/signup.dart';
-import 'package:task_it/screens/Intro/welcome_page.dart';
-import 'package:task_it/screens/user_account.dart';
-import 'package:task_it/spalsh.dart';
+import '/screens/Intro/signup.dart';
+import '/screens/Intro/welcome_page.dart';
+import '/screens/user_account.dart';
+import 'spalsh.dart';
 
-import 'package:task_it/screens/lists_page.dart';
-
+import '/screens/lists_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,10 +16,9 @@ class MyApp extends StatelessWidget {
     //Splash --> homepage (after signing in or skip)
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Task it', 
+      title: 'Task it',
       home: Splash(),
       //title: 'Task it', home: List(),
-      );
-    
+    );
   }
 }

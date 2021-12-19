@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_it/screens/Intro/welcome_page.dart';
+import '/screens/Intro/welcome_page.dart';
 
 class Splash extends StatefulWidget {
   @override

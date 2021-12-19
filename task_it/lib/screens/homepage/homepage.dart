@@ -60,7 +60,9 @@ class Homepage extends StatelessWidget {
           selectedItemColor: CustomColors.Midnight,
           items: [
             BottomNavigationBarItem(
-                label: "Home", icon: Icon(Icons.home_rounded, size: 30)),
+              label: "Home",
+              icon: Icon(Icons.home_rounded, size: 30),
+            ),
             BottomNavigationBarItem(
                 label: "Tasks", icon: Icon(Icons.widgets_rounded, size: 30)),
           ],

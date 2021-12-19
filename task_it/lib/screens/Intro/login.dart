@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:task_it/components/custom_colors.dart';
-import 'package:task_it/screens/Intro/appbar_register.dart';
-import 'package:task_it/spalsh.dart';
-import 'package:task_it/screens/Intro/signup.dart';
-import 'package:task_it/screens/Intro/welcome_page.dart';
+import '/components/custom_colors.dart';
+import '/screens/Intro/appbar_register.dart';
+import '/spalsh.dart';
+import '/screens/Intro/signup.dart';
+import '/screens/Intro/welcome_page.dart';
 
 class login extends StatelessWidget {
   @override

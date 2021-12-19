@@ -1,11 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:task_it/components/custom_colors.dart';
-import 'package:task_it/screens/Intro/login.dart';
-import 'package:task_it/screens/Intro/signup.dart';
-import 'package:task_it/screens/homepage/homepage.dart';
-import 'package:task_it/screens/user_account.dart';
-import 'package:task_it/spalsh.dart';
+import '/components/custom_colors.dart';
+import '/screens/Intro/login.dart';
+import '/screens/Intro/signup.dart';
+import '/screens/user_account.dart';
+import '/spalsh.dart';
+import '/screens/homepage/homepage.dart';
 // ignore_for_file: file_names
 
 class welcomepage extends StatelessWidget {

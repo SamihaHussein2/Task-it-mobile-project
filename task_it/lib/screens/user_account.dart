@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:task_it/models/profile_icons.dart';
-import 'package:task_it/screens/Intro/welcome_page.dart';
+import '/models/profile_icons.dart';
+import '/screens/Intro/welcome_page.dart';
 
 class account extends StatelessWidget {
   //const account({Key? key}) : super(key: key);

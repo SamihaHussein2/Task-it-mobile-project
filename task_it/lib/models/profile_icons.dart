@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:task_it/screens/Intro/welcome_page.dart';
-import 'package:task_it/screens/homepage/homepage.dart';
-import 'package:task_it/screens/leaderboard/leaderboard.dart';
-import 'package:task_it/spalsh.dart';
+import '/screens/Intro/welcome_page.dart';
+import '/screens/homepage/homepage.dart';
+import '/screens/leaderboard/leaderboard.dart';
+import '/spalsh.dart';
 
 class Option {
   final Icon icon;
