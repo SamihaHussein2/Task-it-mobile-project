@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:task_it/components/custom_colors.dart';
-import 'package:task_it/screens/Intro/appbar_register.dart';
+import 'package:task_it/components/appbar_register.dart';
 import 'package:task_it/screens/Intro/login.dart';
 import 'package:task_it/screens/Intro/welcome_page.dart';
 

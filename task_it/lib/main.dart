@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:task_it/screens/Intro/signup.dart';
 import 'package:task_it/screens/Intro/welcome_page.dart';
-import 'package:task_it/screens/user_account.dart';
+import 'package:task_it/screens/account_settings.dart';
 import 'package:task_it/spalsh.dart';
-
 import 'package:task_it/screens/lists_page.dart';
-
 
 void main() => runApp(MyApp());
 
@@ -17,10 +15,10 @@ class MyApp extends StatelessWidget {
     //Splash --> homepage (after signing in or skip)
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Task it', 
-      home: Splash(),
+      title: 'Task it',
+      home: account(),
       //title: 'Task it', home: List(),
-      );
-    
+    );
   }
 }
+  //return MaterialApp(title: 'Task it', home: account());
