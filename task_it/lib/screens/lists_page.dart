@@ -1,6 +1,9 @@
+
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:task_it/components/custom_colors.dart';
+import 'package:task_it/screens/add_new_task.dart';
+
 
 // void main() {
 //   runApp(const List());
@@ -32,7 +35,7 @@ void _show(BuildContext ctx) {
               height: 500,
               color: Colors.white,
               alignment: Alignment.center,
-              child: _addTaskForm(),
+              child: AddTaskForm(),
             ));
   }
     @override
@@ -43,6 +46,7 @@ void _show(BuildContext ctx) {
       title: const Text("aa"),
     ),
     body:  _vieweAllLists(),
+
     floatingActionButton: ElevatedButton(
             child: const Text('add new task'),
             onPressed: () => _show(context),
@@ -129,123 +133,3 @@ return GridView.builder(
             );
   }
 
-
-
-Widget _addTaskForm(){
-  final _formKey = GlobalKey<FormState>();
-   return Form(
-      key: _formKey,
-      child: ListView(
-        //crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const SizedBox(height: 20.0), 
-          Center(
-            child: Column(
-              children: [
-                Container(
-                  width: 250,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(vertical: 16.0),
-                      hintText: 'title',
-                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        ),
-                       isDense: true,
-                       ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty || value.length > 100) {
-                        return 'not accepted title';
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-
-                const SizedBox(height: 20.0),
-
-               Container(
-              width: 250,
-              child: TextFormField(
-                decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(vertical: 24.0),
-                  hintText: 'desc',
-                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                    ),
-                   isDense: true,
-                   ),
-              ),
-            ),
-
-            const SizedBox(height: 20.0),
-
-               Container(
-              width: 250,
-              child: InputDatePickerFormField
-              (
-                firstDate: DateTime.now(),
-                lastDate: DateTime(2050, 1, 1),
-                initialDate: DateTime.now(),
-              )
-            ),
-
-            const SizedBox(height: 20.0),
-
-               Container(
-              // width: 250,
-              // height: 200,
-              child: TimePickerDialog(
-                initialTime: TimeOfDay.now(),
-              )
-            ),
-
-            const SizedBox(height: 20.0),
-
-               Container(
-              width: 250,
-              //height: 200,
-              child: DropdownButtonFormField(
-                items: ['low', 'meduim', 'high'].map<DropdownMenuItem<String>>((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                decoration: const InputDecoration(
-                      contentPadding: EdgeInsets.fromLTRB(0, 5.5, 0, 0),
-                      labelStyle: TextStyle(),
-                      labelText: 'priority'),
-                  // onChanged: (value) {
-                  //   setState(() {
-                  //     task.priority = value;
-                  //   });
-                  // },
-                ),
-              
-            ),
-
-            const SizedBox(height: 20.0),
-
-               Container(
-              width: 200,
-              child: ElevatedButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, or false otherwise.
-                if (_formKey.currentState!.validate()) {
-                  // you'd often call a server or save the information in a database.
-                }
-              },
-              child: const Text('Create Tasky'),
-            ),
-            ),
-
-            const SizedBox(height: 20.0),
-              ],
-            ),
-            
-          ),
-        ],
-      ),
-    );
-}
