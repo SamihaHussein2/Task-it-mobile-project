@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:task_it/components/custom_colors.dart';
 import 'package:task_it/screens/Intro/welcome_page.dart';
 
 class register_appbar extends StatelessWidget implements PreferredSizeWidget {
   //final Text title;
   final AppBar appBar;
-  const register_appbar({Key? key, required this.appBar}) : super(key: key);
+  final String title;
+  const register_appbar({Key? key, required this.appBar, required this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
+        title: Text(
+          title,
+          style: TextStyle(
+              fontWeight: FontWeight.bold, color: CustomColors.Midnight),
+        ),
         backgroundColor: Colors.white,
         elevation: 0,
         //systemOverlayStyle: SystemUiOverlayStyle.light, //badal brightness fl version el gedida
@@ -19,7 +27,7 @@ class register_appbar extends StatelessWidget implements PreferredSizeWidget {
           },
           icon: const Icon(Icons.arrow_back),
           iconSize: 20,
-          color: Color(0xffee3f23),
+          color: CustomColors.Midnight,
         ));
   }
 

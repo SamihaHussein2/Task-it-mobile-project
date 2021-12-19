@@ -30,6 +30,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+
   hexcolor: ^2.0.5
   provider: ^6.0.1
   dotted_border: ^2.0.0+2
@@ -39,6 +40,8 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  modal_bottom_sheet: ^2.0.0
+  flutter_launcher_icons: ^0.9.2
 
 dev_dependencies:
   flutter_test:
@@ -50,6 +53,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^1.0.0
+  
+flutter_icons:
+  android: true
+  image_path: "assets/logo/logo-final.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -62,13 +69,18 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets: 
-  - assets/leaderboard/Top1.jpg
+   - assets/leaderboard/Top1.jpg
   - assets/leaderboard/Top2.jpg
   - assets/leaderboard/Top3.jpg
   - assets/leaderboard/crown.png
   - assets/leaderboard/no1.png
   - assets/leaderboard/no2.png
   - assets/leaderboard/no3.png
+  - assets/leaderboard/4.jpg
+  - assets/leaderboard/5.jpg
+  - assets/leaderboard/6.jpg
+  - assets/logo/logo-final.png
+  
 
   # To add assets to your application, add an assets section, like this:
   # assets:

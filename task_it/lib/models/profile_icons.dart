@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_it/screens/Intro/welcome_page.dart';
 import 'package:task_it/screens/homepage/homepage.dart';
-import 'package:task_it/screens/leaderboard.dart';
+import 'package:task_it/screens/leaderboard/leaderboard.dart';
 import 'package:task_it/spalsh.dart';
 
 class Option {
@@ -26,7 +26,7 @@ final options = [
   Option(
     icon: Icon(Icons.emoji_events_rounded, size: 30.0),
     title: 'Trophies',
-    location: LeaderBoardScreen(), //change to trophies page
+    location: Splash(), //change to trophies page
   ),
   Option(
     icon: Icon(Icons.person_add_alt_1, size: 30.0),

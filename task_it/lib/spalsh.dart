@@ -26,14 +26,24 @@ class _SplashState extends State<Splash> {
             alignment: Alignment.center,
             child: Column(
               children: [
+                SizedBox(
+                  height: 200,
+                ),
                 TweenAnimationBuilder(
                   duration: Duration(seconds: 1),
                   tween: Tween<double>(begin: 0, end: 2 * 3.14),
                   builder: (_, double angle, __) {
                     return Transform.rotate(
                         angle: angle,
-                        child: Image.asset("assets/logo/logo-icon.png"));
+                        child: Image.asset(
+                          "assets/logo/logo-final.png",
+                          width: 300,
+                          height: 200,
+                        ));
                   },
+                ),
+                SizedBox(
+                  height: 100,
                 ),
                 Image.asset(
                   "assets/logo/OUR-LOGO.png",

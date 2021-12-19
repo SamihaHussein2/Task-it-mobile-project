@@ -1,5 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:task_it/components/custom_colors.dart';
 import 'package:task_it/screens/Intro/login.dart';
 import 'package:task_it/screens/Intro/signup.dart';
 import 'package:task_it/screens/user_account.dart';
@@ -27,7 +28,7 @@ class welcomepage extends StatelessWidget {
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
-                          color: const Color(0xffee3f23)),
+                          color: CustomColors.Midnight),
                     ),
                     SizedBox(
                       height: 10,
@@ -44,21 +45,21 @@ class welcomepage extends StatelessWidget {
                 ),
                 Container(
                     //space 3shan tozbot el image fl center
-                    margin: EdgeInsets.only(left: 20),
+                    //margin: EdgeInsets.only(left: 0),
                     child: Column(
-                      // mainAxisAlignment: MainAxisAlignment.center,
-                      // crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Padding(
-                          //space between image and text (badal el sizedBox)
-                          padding: EdgeInsets.all(25),
-                        ),
-                        Image.asset(
-                          "assets/logo/task-WP.png",
-                          width: 150,
-                        )
-                      ],
-                    )),
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      //space between image and text (badal el sizedBox)
+                      padding: EdgeInsets.all(25),
+                    ),
+                    Image.asset(
+                      "assets/logo/logo-final.png",
+                      width: 170,
+                    )
+                  ],
+                )),
                 Column(
                   children: [
                     SizedBox(
@@ -67,22 +68,21 @@ class welcomepage extends StatelessWidget {
                     MaterialButton(
                       minWidth: 300, //badal el width fl material app
                       height: 60,
-                      color: const Color(0xffee3f23),
+                      color: CustomColors.YellowOrange,
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => signup()));
+                            MaterialPageRoute(builder: (context) => login()));
                       },
                       //define shape el button
                       shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                           borderRadius: BorderRadius.circular(50)),
-
                       child: Text(
-                        "Get Started",
+                        "Login",
                         style: TextStyle(
-                          color: Colors.white,
+                          color: Colors.black,
                           fontSize: 18,
                         ),
                       ),
@@ -93,21 +93,22 @@ class welcomepage extends StatelessWidget {
                     MaterialButton(
                       minWidth: 300, //badal el width fl material app
                       height: 60,
-                      //color: const Color(0xffee3f23),
+                      color: CustomColors.Midnight,
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => login()));
+                            MaterialPageRoute(builder: (context) => signup()));
                       },
                       //define shape el button
                       shape: RoundedRectangleBorder(
                           side: BorderSide(
-                            color: Colors.black,
+                            color: Colors.white,
                           ),
                           borderRadius: BorderRadius.circular(50)),
+
                       child: Text(
-                        "Login",
+                        "Get Started",
                         style: TextStyle(
-                          color: Colors.black,
+                          color: Colors.white,
                           fontSize: 18,
                         ),
                       ),
@@ -128,7 +129,7 @@ class welcomepage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     //change page to the homepage
-                                    builder: (context) => account()));
+                                    builder: (context) => Splash()));
                           },
                       ),
                     )
