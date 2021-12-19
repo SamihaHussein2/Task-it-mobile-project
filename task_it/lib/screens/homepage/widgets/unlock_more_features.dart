@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '/spalsh.dart';
+import '/screens/Intro/login.dart';
 import '/components/custom_colors.dart';
 
 class UnlockMoreFeatures extends StatelessWidget {
@@ -55,11 +57,19 @@ class UnlockMoreFeatures extends StatelessWidget {
             bottom: 35,
             right: 30,
             child: Container(
-              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                   color: CustomColors.YellowOrange,
                   borderRadius: BorderRadius.circular(15)),
-              child: Icon(Icons.login, color: CustomColors.SeaShell),
+              child: IconButton(
+                icon: Icon(Icons.login),
+                color: CustomColors.SeaShell,
+                onPressed: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => login()),
+                  )
+                },
+              ),
             ),
           )
         ],

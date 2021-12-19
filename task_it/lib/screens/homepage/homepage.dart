@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '/screens/user_account.dart';
 import '/components/custom_colors.dart';
 import '/screens/homepage/widgets/default_tasks.dart';
 import '/screens/homepage/widgets/unlock_more_features.dart';
@@ -11,7 +12,7 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       backgroundColor: CustomColors.Cultured,
       appBar: _buildAppBar(context),
-      drawer: _buildDrawer(),
+      drawer: _buildDrawer(context),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -34,7 +35,6 @@ class Homepage extends StatelessWidget {
         elevation: 30,
         backgroundColor: CustomColors.Midnight,
       ),
-
     );
   }
 
@@ -95,7 +95,7 @@ class Homepage extends StatelessWidget {
     );
   }
 
-  Drawer _buildDrawer() {
+  Drawer _buildDrawer(BuildContext context) {
     return Drawer(
         child: ListView(
       padding: EdgeInsets.zero,
@@ -116,7 +116,11 @@ class Homepage extends StatelessWidget {
         ),
         ListTile(
           leading: Icon(Icons.account_circle_rounded),
-          title: Text("My Account"),
+          title: Text("Profile"),
+          onTap: () => {
+            Navigator.push(
+                context, new MaterialPageRoute(builder: (context) => account()))
+          },
         ),
         ListTile(
           leading: Icon(Icons.notifications_active_rounded),
