@@ -3,6 +3,7 @@ import '/screens/user_account.dart';
 import '/components/custom_colors.dart';
 import '/screens/homepage/widgets/default_tasks.dart';
 import '/screens/homepage/widgets/unlock_more_features.dart';
+import '/screens/leaderboard/leaderboard.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -125,6 +126,16 @@ class Homepage extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.notifications_active_rounded),
           title: Text("Notifications"),
+        ),
+        ListTile(
+          leading: Icon(Icons.leaderboard_rounded),
+          title: Text("Leaderboard"),
+          onTap: () => {
+            Navigator.push(
+                context,
+                new MaterialPageRoute(
+                    builder: (context) => LeaderBoardScreen()))
+          },
         ),
         Divider(
           thickness: 1,
