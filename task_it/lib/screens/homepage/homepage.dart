@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:task_it/screens/lists_page.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import '/screens/lists_page.dart';
 import '/screens/user_account.dart';
 import '/components/custom_colors.dart';
 import '/screens/homepage/widgets/default_tasks.dart';
 import '/screens/homepage/widgets/unlock_more_features.dart';
 import '/screens/leaderboard/leaderboard.dart';
+import '/screens/add_new_task.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -25,14 +27,14 @@ class Homepage extends StatelessWidget {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
           ),
           Expanded(
-            child: TaskList(),
+            child: DefaultTasks(),
           )
         ],
       ),
       bottomNavigationBar: _buildBottomNavBar(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => _show(context),
         child: Icon(Icons.add_rounded, size: 40),
         elevation: 30,
         backgroundColor: CustomColors.Midnight,
@@ -65,7 +67,12 @@ class Homepage extends StatelessWidget {
               icon: Icon(Icons.home_rounded, size: 30),
             ),
             BottomNavigationBarItem(
-                label: "Tasks", icon: Icon(Icons.widgets_rounded, size: 30)),
+              label: "Tasks",
+              icon: IconButton(
+                icon: Icon(Icons.widgets_rounded, size: 30),
+                onPressed: () => TaskList(),
+              ),
+            )
           ],
         ),
       ),
@@ -97,6 +104,21 @@ class Homepage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _show(BuildContext ctx) {
+    showMaterialModalBottomSheet(
+        // add button add w add task fi al set state?
+        elevation: 10,
+        backgroundColor: Colors.amber,
+        context: ctx,
+        builder: (ctx) => Container(
+              //width: 100,
+              height: 500,
+              color: Colors.white,
+              alignment: Alignment.center,
+              child: AddTaskForm(),
+            ));
   }
 
   Drawer _buildDrawer(BuildContext context) {

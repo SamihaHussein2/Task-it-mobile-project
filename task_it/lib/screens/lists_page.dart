@@ -38,9 +38,6 @@ class AllLists extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("aa"),
-      ),
       body: _vieweAllLists(),
       floatingActionButton: ElevatedButton(
         child: const Text('add new task'),
