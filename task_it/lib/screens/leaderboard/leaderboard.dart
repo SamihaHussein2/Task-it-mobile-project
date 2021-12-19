@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
+import '/screens/homepage/homepage.dart';
 import '/screens/leaderboard/animated_buttons.dart';
+import '/screens/trophies.dart';
 
 class LeaderBoardScreen extends StatefulWidget {
   @override
@@ -13,7 +15,7 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFFDF5EC),
+        color: Colors.white,
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -21,10 +23,13 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios),
-            color: Color(0xFF1E4E5F),
-            onPressed: () => Navigator.pop(context, false),
-          ),
+              icon: Icon(Icons.arrow_back_ios, color: Color(0xFF1E4E5F)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Homepage()),
+                );
+              }),
           title: Text("Leaderboard"),
           titleTextStyle: TextStyle(
               color: Color(0xFF1E4E5F),
@@ -32,10 +37,19 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
               fontWeight: FontWeight.bold),
           centerTitle: true,
           actions: [
-            Icon(
-              Icons.emoji_events,
-              color: Color(0xFF1E4E5F),
-            ),
+            IconButton(
+              icon: Icon(
+                Icons.emoji_events,
+                color: Color(0xFF1E4E5F),
+              ),
+              iconSize: 30,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TrophiesScreen()),
+                );
+              },
+            )
           ],
         ),
         body: Column(children: [
