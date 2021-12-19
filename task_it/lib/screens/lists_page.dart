@@ -87,7 +87,7 @@ void _show(BuildContext ctx) {
     final icons = [Icons.face, Icons.info, Icons.call, Icons.home, Icons.local_grocery_store_rounded];
     final colors = [Colors.pink , Colors.green, Colors.blue, Colors.red, Colors.orange];
     Map<String, int> lists = {'list1': 5, 'list2': 2, 'list3': 1, 'list4' : 9, 'list5':4};
-
+    
 
 return GridView.builder(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

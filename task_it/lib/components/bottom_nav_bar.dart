@@ -39,19 +39,19 @@ class BottomNavBar extends StatelessWidget {
             children: [
               IconButton(
                 icon: Icon(Icons.home),
-                onPressed: () =>
-                    Navigator.pushNamed(context, Homepage.routeName),
+                onPressed: () {}
+                  //  Navigator.pushNamed(context, Homepage.routeName),
               ),
               IconButton(
                 padding: new EdgeInsets.all(0.0),
                 icon: Icon(Icons.add_circle_outline_outlined, size: 40),
-                onPressed: () =>
-                    Navigator.pushNamed(context, Homepage.routeName),
+                onPressed: () {}
+                   // Navigator.pushNamed(context, Homepage.routeName),
               ),
               IconButton(
                 icon: Icon(Icons.category_rounded),
-                onPressed: () =>
-                    Navigator.pushNamed(context, Homepage.routeName),
+                onPressed: () {}
+                  //  Navigator.pushNamed(context, Homepage.routeName),
               ),
             ],
           )),
