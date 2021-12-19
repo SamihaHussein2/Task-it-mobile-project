@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Task it',
-      home: account(),
+      home: welcomepage(),
       //title: 'Task it', home: List(),
     );
   }

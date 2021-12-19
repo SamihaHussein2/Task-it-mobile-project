@@ -130,7 +130,7 @@ class welcomepage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     //change page to the homepage
-                                    builder: (context) => Splash()));
+                                    builder: (context) => Homepage()));
                           },
                       ),
                     )
