@@ -6,8 +6,8 @@ import '/components/custom_colors.dart';
 //   runApp(const List());
 // }
 
-class List extends StatelessWidget {
-  const List({Key? key}) : super(key: key);
+class TaskList extends StatelessWidget {
+  const TaskList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

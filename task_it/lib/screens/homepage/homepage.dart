@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_it/screens/lists_page.dart';
 import '/screens/user_account.dart';
 import '/components/custom_colors.dart';
 import '/screens/homepage/widgets/default_tasks.dart';
@@ -24,7 +25,7 @@ class Homepage extends StatelessWidget {
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
           ),
           Expanded(
-            child: DefaultTasks(),
+            child: TaskList(),
           )
         ],
       ),

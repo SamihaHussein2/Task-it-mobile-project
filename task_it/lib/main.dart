@@ -16,9 +16,9 @@ class MyApp extends StatelessWidget {
     //Splash --> homepage (after signing in or skip)
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Task it',
-      home: Splash(),
-      //title: 'Task it', home: List(),
+     // title: 'Task it',
+     // home: Splash(),
+      title: 'Task it', home: TaskList(),
     );
   }
 }
