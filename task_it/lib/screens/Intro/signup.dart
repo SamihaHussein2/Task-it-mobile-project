@@ -7,8 +7,8 @@ import '/screens/Intro/appbar_register.dart';
 import '/screens/Intro/login.dart';
 import '/screens/Intro/welcome_page.dart';
 
-class signup extends StatelessWidget {
-  const signup({Key? key}) : super(key: key);
+class Signup extends StatelessWidget {
+  const Signup({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +165,7 @@ class _signupformState extends State<signupform> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => login()));
+                                      builder: (context) => Login()));
                             }
                           },
                           //define shape el button
@@ -203,7 +203,7 @@ class _signupformState extends State<signupform> {
                                         context,
                                         MaterialPageRoute(
                                             //change page to the homepage
-                                            builder: (context) => login()));
+                                            builder: (context) => Login()));
                                   },
                               ),
                             ),
