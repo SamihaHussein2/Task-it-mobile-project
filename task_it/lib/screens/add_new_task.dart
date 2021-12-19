@@ -116,7 +116,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                 decoration: const InputDecoration(
                       contentPadding: EdgeInsets.fromLTRB(0, 5.5, 0, 0),
                       labelStyle: TextStyle(),
-                      labelText: 'priority'),
+                      labelText: 'priority'), onChanged: (String? value) {  },
                   // onChanged: (value) {
                   //   setState(() {
                   //     task.priority = value;
