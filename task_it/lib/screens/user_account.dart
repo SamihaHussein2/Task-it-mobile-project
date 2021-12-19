@@ -3,6 +3,7 @@ import '/components/custom_colors.dart';
 import '/models/profile_icons.dart';
 import '/screens/Intro/welcome_page.dart';
 import '/spalsh.dart';
+import '/screens/homepage/homepage.dart';
 
 class Account extends StatelessWidget {
   //const account({Key? key}) : super(key: key);
@@ -24,8 +25,8 @@ class Account extends StatelessWidget {
           //systemOverlayStyle: SystemUiOverlayStyle.light, //badal brightness fl version el gedida
           leading: IconButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => welcomepage()));
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Homepage()));
               //change location to homepage
             },
             icon: const Icon(Icons.arrow_back),
@@ -102,7 +103,7 @@ class Account extends StatelessWidget {
                     child: Center(
                         child: MaterialButton(
                       onPressed: () {
-                        Navigator.push(
+                        Navigator.pop(
                             context,
                             MaterialPageRoute(
                                 //after validation goes to homepage
@@ -133,27 +134,19 @@ class Account extends StatelessWidget {
                     spacing: 20,
                     children: [
                       Image.asset(
-                        "assets/avatar/avatar.jpg",
+                        "assets/trophies/trophy1.png",
                         width: 30,
                       ),
                       Image.asset(
-                        "assets/avatar/avatar.jpg",
+                        "assets/trophies/trophy2.png",
                         width: 30,
                       ),
                       Image.asset(
-                        "assets/avatar/avatar.jpg",
+                        "assets/trophies/trophy3.png",
                         width: 30,
                       ),
                       Image.asset(
-                        "assets/avatar/avatar.jpg",
-                        width: 30,
-                      ),
-                      Image.asset(
-                        "assets/avatar/avatar.jpg",
-                        width: 30,
-                      ),
-                      Image.asset(
-                        "assets/avatar/avatar.jpg",
+                        "assets/trophies/grey_trophy.png",
                         width: 30,
                       ),
                     ],

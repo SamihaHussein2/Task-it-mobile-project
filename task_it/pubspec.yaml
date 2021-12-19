@@ -80,6 +80,11 @@ flutter:
     - assets/leaderboard/6.jpg
     - assets/logo/logo-final.png
     - assets/avatar/avatar.jpg
+    - assets/trophies/trophy1.png
+    - assets/trophies/trophy2.png
+    - assets/trophies/trophy3.png
+    - assets/trophies/grey_trophy.png
+    - assets/logo/OUR-LOGO.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -128,14 +128,12 @@ class Homepage extends StatelessWidget {
       children: [
         UserAccountsDrawerHeader(
           decoration: BoxDecoration(color: CustomColors.Midnight),
-          accountName: Text('John Doe'),
-          accountEmail: Text('johndoe@gmail.com'),
+          accountName: Text('Salma Tamer'),
+          accountEmail: Text('salma12@gmail.com'),
           currentAccountPicture: CircleAvatar(
-              backgroundColor: CustomColors.Cultured,
-              child: Icon(
-                Icons.person_rounded,
-                color: CustomColors.Midnight,
-              )),
+            radius: 50,
+            backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
+          ),
         ),
         Divider(
           color: Colors.white,
