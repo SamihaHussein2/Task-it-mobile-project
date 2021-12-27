@@ -31,7 +31,7 @@ class Homepage extends StatelessWidget {
           )
         ],
       ),
-      bottomNavigationBar: _buildBottomNavBar(),
+      bottomNavigationBar: _buildBottomNavBar(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () => _show(context),
@@ -42,7 +42,7 @@ class Homepage extends StatelessWidget {
     );
   }
 
-  Widget _buildBottomNavBar() {
+  Widget _buildBottomNavBar(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
@@ -59,7 +59,7 @@ class Homepage extends StatelessWidget {
         child: BottomNavigationBar(
           backgroundColor: CustomColors.Cultured,
           showSelectedLabels: true,
-          showUnselectedLabels: false,
+          showUnselectedLabels: true,
           selectedItemColor: CustomColors.Midnight,
           items: [
             BottomNavigationBarItem(
@@ -70,7 +70,10 @@ class Homepage extends StatelessWidget {
               label: "Tasks",
               icon: IconButton(
                 icon: Icon(Icons.widgets_rounded, size: 30),
-                onPressed: () => TaskList(),
+                onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => TaskList()),
+                ),
               ),
             )
           ],

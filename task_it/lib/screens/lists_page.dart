@@ -68,7 +68,29 @@ Widget _vieweAllLists() {
                   ),
                   onPressed: () {},
                   child: Text(
-                    "4225",
+                    "Edit",
+                    style: TextStyle(color: CustomColors.Midnight),
+                  ),
+                ),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(CustomColors.Cultured),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "Delete",
+                    style: TextStyle(color: CustomColors.Midnight),
+                  ),
+                ),
+                TextButton(
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(CustomColors.Cultured),
+                  ),
+                  onPressed: () {},
+                  child: Text(
+                    "Cancel",
                     style: TextStyle(color: CustomColors.Midnight),
                   ),
                 )

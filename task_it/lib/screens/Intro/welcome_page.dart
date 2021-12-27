@@ -72,7 +72,7 @@ class welcomepage extends StatelessWidget {
                       color: CustomColors.YellowOrange,
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => login()));
+                            MaterialPageRoute(builder: (context) => Login()));
                       },
                       //define shape el button
                       shape: RoundedRectangleBorder(
@@ -97,7 +97,7 @@ class welcomepage extends StatelessWidget {
                       color: CustomColors.Midnight,
                       onPressed: () {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => signup()));
+                            MaterialPageRoute(builder: (context) => Signup()));
                       },
                       //define shape el button
                       shape: RoundedRectangleBorder(
