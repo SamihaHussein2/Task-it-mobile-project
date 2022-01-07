@@ -146,11 +146,7 @@ class Account extends StatelessWidget {
                         width: 30,
                       ),
                       Image.asset(
-<<<<<<< Updated upstream
                         "assets/trophies/grey_trophy.png",
-=======
-                        "assets/trophies/grey-trophy.png",
->>>>>>> Stashed changes
                         width: 30,
                       ),
                     ],
