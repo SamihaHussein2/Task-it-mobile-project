@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '/screens/lists_page.dart';
 import '/screens/user_account.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 import '/screens/homepage/widgets/default_tasks.dart';
 import '/screens/homepage/widgets/unlock_more_features.dart';
 import '/screens/leaderboard/leaderboard.dart';

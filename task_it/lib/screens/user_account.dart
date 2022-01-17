@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 import '/models/profile_icons.dart';
 import '/screens/Intro/welcome_page.dart';
 import '/spalsh.dart';

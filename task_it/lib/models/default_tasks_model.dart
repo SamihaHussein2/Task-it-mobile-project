@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 //import 'package:hexcolor/hexcolor.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 
 class DefaultTasksList {
   IconData? taskIcon;

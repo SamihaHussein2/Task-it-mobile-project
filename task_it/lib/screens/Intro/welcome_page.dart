@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 import '/screens/Intro/login.dart';
 import '/screens/Intro/signup.dart';
 import '/screens/user_account.dart';

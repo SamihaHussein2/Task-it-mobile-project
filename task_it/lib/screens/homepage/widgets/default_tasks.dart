@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 import '/models/default_tasks_model.dart';
 
 class DefaultTasks extends StatelessWidget {
