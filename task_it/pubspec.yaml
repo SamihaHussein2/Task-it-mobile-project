@@ -33,7 +33,7 @@ dependencies:
   hexcolor: ^2.0.5
   dotted_border: ^2.0.0+2
   modal_bottom_sheet: ^2.0.0
-  flutter_launcher_icons: ^0.9.2
+  
 
 
 
@@ -42,6 +42,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  flutter_launcher_icons: "^0.9.2"
   flutter_test:
     sdk: flutter
 
@@ -54,7 +55,8 @@ dev_dependencies:
 
 flutter_icons:
   android: true
-  image_path: "assets/logo/logo-final.png"
+  ios: true
+  image_path: "assets/taskit_logo.png"
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -85,6 +87,8 @@ flutter:
     - assets/trophies/trophy3.png
     - assets/trophies/grey_trophy.png
     - assets/logo/OUR-LOGO.png
+    - assets/trophies/grey_trophy.png
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
