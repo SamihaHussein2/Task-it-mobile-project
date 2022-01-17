@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import '/screens/homepage/homepage.dart';
 import '/screens/Intro/signup.dart';
@@ -6,7 +7,11 @@ import '/screens/user_account.dart';
 import 'spalsh.dart';
 import '/screens/lists_page.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

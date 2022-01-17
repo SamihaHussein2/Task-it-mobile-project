@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:22842564042:android:ba94529893f5061f888333",
+        "android_client_info": {
+          "package_name": "com.miu.taskit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "22842564042-p06gqjhrbomhfn3e5ifgmkgrj9cogi3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNv9Gnj4QQ2G9WP0oYSH9mDELYpb-cXfc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "22842564042-p06gqjhrbomhfn3e5ifgmkgrj9cogi3e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
