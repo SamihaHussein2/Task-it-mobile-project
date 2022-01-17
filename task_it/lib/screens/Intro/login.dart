@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 import 'appbar_register.dart';
 import '/spalsh.dart';
 import 'signup.dart';

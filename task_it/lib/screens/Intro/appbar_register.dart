@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 import '/screens/Intro/welcome_page.dart';
 
 class register_appbar extends StatelessWidget implements PreferredSizeWidget {

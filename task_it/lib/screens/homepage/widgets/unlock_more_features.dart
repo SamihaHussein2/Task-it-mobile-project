@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '/spalsh.dart';
 import '/screens/Intro/login.dart';
-import '/components/custom_colors.dart';
+import '/constants/custom_colors.dart';
 
 class UnlockMoreFeatures extends StatelessWidget {
   const UnlockMoreFeatures({Key? key}) : super(key: key);
