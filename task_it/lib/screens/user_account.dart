@@ -3,7 +3,7 @@ import '/constants/custom_colors.dart';
 import '/models/profile_icons.dart';
 import '/screens/Intro/welcome_page.dart';
 import '/spalsh.dart';
-import 'navscreens/homepage/homepage.dart';
+import 'navscreens/main_page.dart';
 
 class Account extends StatelessWidget {
   //const account({Key? key}) : super(key: key);
@@ -26,7 +26,7 @@ class Account extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Homepage()));
+                  context, MaterialPageRoute(builder: (context) => MainPage()));
               //change location to homepage
             },
             icon: const Icon(Icons.arrow_back),
