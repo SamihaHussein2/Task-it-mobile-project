@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:task_it/screens/task_details/task_details.dart';
 import '/constants/custom_colors.dart';
 import '/models/default_tasks_model.dart';
 
@@ -34,30 +35,37 @@ class DefaultTasks extends StatelessWidget {
   }
 
   Widget _buildTask(BuildContext context, DefaultTasksList task) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: task.backgroundColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(task.taskIcon, color: task.iconColor, size: 35),
-          SizedBox(height: 30),
-          Text(task.taskTitle!,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              _buildTaskStatus(task.buttonColor!, CustomColors.Midnight,
-                  '${task.numberOfUnfinishedTasks} Left'),
-              SizedBox(width: 5),
-              _buildTaskStatus(CustomColors.YellowOrange, CustomColors.Midnight,
-                  '${task.numberOfCompletedTasks} Done')
-            ],
-          )
-        ],
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => TaskDetailPage(task))
+        );
+      },
+      child: Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: task.backgroundColor,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(task.taskIcon, color: task.iconColor, size: 35),
+            SizedBox(height: 30),
+            Text(task.taskTitle!,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+            SizedBox(height: 20),
+            Row(
+              children: [
+                _buildTaskStatus(task.buttonColor!, CustomColors.Midnight,
+                    '${task.numberOfUnfinishedTasks} Left'),
+                SizedBox(width: 5),
+                _buildTaskStatus(CustomColors.YellowOrange, CustomColors.Midnight,
+                    '${task.numberOfCompletedTasks} Done')
+              ],
+            )
+          ],
+        ),
       ),
     );
   }

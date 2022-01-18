@@ -51,6 +51,7 @@ class DefaultTasksList {
         numberOfUnfinishedTasks: 2,
         numberOfCompletedTasks: 3,
       ),
+      
       DefaultTasksList(isAddNewTask: true),
     ];
   }
