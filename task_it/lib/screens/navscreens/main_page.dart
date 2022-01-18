@@ -15,8 +15,9 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  List navBarPages = [Homepage(), TasksList()];
+  String appURL = "";
   int currentIndex = 0;
+  List navBarPages = [Homepage(), TasksList()];
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +91,7 @@ class _MainPageState extends State<MainPage> {
           ),
           ListTile(
             leading: Icon(Icons.share_rounded),
-            title: Text("Invite Friends"),
+            title: Text("Share App"),
           ),
           ListTile(
             leading: Icon(Icons.toggle_on_rounded),
