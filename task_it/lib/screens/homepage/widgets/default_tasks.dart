@@ -34,7 +34,6 @@ class DefaultTasks extends StatelessWidget {
         ));
   }
 
-<<<<<<< Updated upstream
   Widget _buildTask(BuildContext context, DefaultTasksList task) {
     return GestureDetector(
       onTap: (){
@@ -67,33 +66,6 @@ class DefaultTasks extends StatelessWidget {
             )
           ],
         ),
-=======
-  Widget _buildTask(BuildContext context, DefaultTasksList task) { //default tasks
-    return Container(
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: task.backgroundColor,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(task.taskIcon, color: task.iconColor, size: 35),
-          SizedBox(height: 30),
-          Text(task.taskTitle!,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-          SizedBox(height: 20),
-          Row(
-            children: [
-              _buildTaskStatus(task.buttonColor!, CustomColors.Midnight,
-                  '${task.numberOfUnfinishedTasks} Left'),
-              SizedBox(width: 5),
-              _buildTaskStatus(CustomColors.YellowOrange, CustomColors.Midnight,
-                  '${task.numberOfCompletedTasks} Done')
-            ],
-          )
-        ],
->>>>>>> Stashed changes
       ),
     );
   }

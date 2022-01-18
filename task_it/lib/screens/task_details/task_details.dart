@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:task_it/models/default_tasks_model.dart';
 
@@ -20,17 +18,36 @@ class TaskDetailPage extends StatelessWidget {
   }
 
   Widget _buildAppBar(BuildContext context) {
-    return SliverAppBar(
+   return SliverAppBar(
       expandedHeight: 90,
-      backgroundColor: Colors.white,
-      leading: IconButton(onPressed: ()=> Navigator.of(context).pop(), icon: Icon(Icons.arrow_back_ios), iconSize: 20,),
+      backgroundColor: Colors.black,
+      leading: IconButton(
+        onPressed: ()=> Navigator.of(context).pop(),
+        icon: Icon(Icons.arrow_back_ios),
+        iconSize: 20,
+        ),
       actions: [
-        Icon(Icons.more_vert, size: 40),
+        Icon(
+          Icons.more_vert, size: 40,
+          ),
       ],
       flexibleSpace: FlexibleSpaceBar(
         title: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('${task.taskTitle} tasks'),
+            Text(
+              '${task.taskTitle} tasks',
+              style: TextStyle(fontWeight: FontWeight.bold,
+              )),
+            SizedBox(height: 5),
+            Text(
+              'you have  ${task.numberOfUnfinishedTasks} tasks for today!',
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[700],
+                )
+            ),
           ]
         ),
       ),
