@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '/screens/homepage/homepage.dart';
 import '/screens/Intro/signup.dart';
 import '/screens/Intro/welcome_page.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Task it',
       home: Splash(),
+      // home: TaskList(),
     );
   }
 }
