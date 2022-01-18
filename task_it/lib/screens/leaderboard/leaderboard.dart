@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
-import '/screens/homepage/homepage.dart';
+import '../navscreens/main_page.dart';
 import '/screens/leaderboard/animated_buttons.dart';
 import '/screens/trophies.dart';
 
@@ -27,7 +27,7 @@ class _LeaderBoardScreenState extends State<LeaderBoardScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Homepage()),
+                  MaterialPageRoute(builder: (context) => MainPage()),
                 );
               }),
           title: Text("Leaderboard"),

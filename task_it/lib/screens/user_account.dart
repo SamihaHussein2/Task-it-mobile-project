@@ -3,7 +3,7 @@ import '/constants/custom_colors.dart';
 import '/models/profile_icons.dart';
 import '/screens/Intro/welcome_page.dart';
 import '/spalsh.dart';
-import '/screens/homepage/homepage.dart';
+import 'navscreens/homepage/homepage.dart';
 
 class Account extends StatelessWidget {
   //const account({Key? key}) : super(key: key);

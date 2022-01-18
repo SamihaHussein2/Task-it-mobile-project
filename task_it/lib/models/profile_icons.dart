@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/screens/Intro/welcome_page.dart';
-import '/screens/homepage/homepage.dart';
+import '../screens/navscreens/homepage/homepage.dart';
 import '/screens/leaderboard/leaderboard.dart';
 import '/spalsh.dart';
 
