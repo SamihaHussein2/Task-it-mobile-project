@@ -1,16 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:task_it/models/default_tasks_model.dart';
+import 'package:task_it/screens/task_details/widgets/date_picker.dart';
+import 'package:task_it/screens/task_details/widgets/task_timeline.dart';
+import 'package:task_it/screens/task_details/widgets/task_title.dart';
 
 class TaskDetailPage extends StatelessWidget {
  final DefaultTasksList task;
  TaskDetailPage(this.task);
   @override
   Widget build(BuildContext context) {
+    final detailList= task.desc;
     return Scaffold(
       backgroundColor: Colors.black,
       body: CustomScrollView(
         slivers:[
           _buildAppBar(context),
+          SliverToBoxAdapter(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                )
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  DatePicker(),
+                  TaskTitle(),
+                ],
+              ),
+            ),
+          ),
+          detailList == null ? 
+          SliverFillRemaining(
+            child: Container(
+              color: Colors.white,
+              child: Center(child: Text('No Tasks ', style: TextStyle(color: Colors.grey, fontSize: 18),
+              ),
+              ),
+            ),
+          ) :
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (_,index)=> TaskTimeline(detailList[index]),
+              childCount: detailList.length,
+              )
+          )
         ]
       )
       
