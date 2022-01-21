@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-
-import 'default_tasks_model.dart';
+// import 'package:task_it/constants/custom_colors.dart';
 
 class Task {
+  
+  String id;
   String title;
   DateTime? dateTime;
-//  DefaultTasksList list;
   bool completed;
 
-  Task({@required this.title='', this.dateTime, this.completed = false});
+  Task({
+    required this.id,
+    required this.title,
+    this.dateTime,
+    this.completed = false,
+  });
 
-  void toggleCompleted() {
-    completed = !completed;
-  }
+    void toggle() {
+	completed = !completed;
 }
-  
+}

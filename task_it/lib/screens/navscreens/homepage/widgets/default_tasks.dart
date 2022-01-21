@@ -1,5 +1,9 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:dotted_border/dotted_border.dart';
+import 'package:provider/provider.dart';
+import 'package:task_it/provider/list_provider.dart';
 import 'package:task_it/screens/task_details/task_details.dart';
 import '/constants/custom_colors.dart';
 import '/models/default_tasks_model.dart';
@@ -15,23 +19,34 @@ class DefaultTasks extends StatelessWidget {
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2, crossAxisSpacing: 10, mainAxisSpacing: 10),
         itemBuilder: (context, index) => tasksList[index].isAddNewTask!
-            ? _buildAddNewTask()
+            ? _buildAddNewTask(context)
             : _buildTask(context, tasksList[index]),
       ),
     );
   }
 
-  Widget _buildAddNewTask() { //add new list widget
+  Widget _buildAddNewTask(BuildContext context) { //add new list widget
     return DottedBorder(
         borderType: BorderType.RRect,
         radius: Radius.circular(20),
         dashPattern: [10, 10],
         color: Colors.grey,
         strokeWidth: 2,
-        child: Center(
+        child: const Center(
           child: Text('+ Add',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-        ));
+          //child: ElevatedButton(onPressed: (){}
+          //                     // Provider.of<ListProvider>(context).addList(DefaultTasksList(
+          //                     //   id: 9,
+          //                     //   taskTitle: 'new list',
+          //                     //   backgroundColor: Colors.black,
+          //                     //   buttonColor: Colors.white,
+          //                     //   iconColor: Colors.red,
+                                
+          //                     //)),
+          //                      child: Text("+ Add")),
+        )
+        );
   }
 
   Widget _buildTask(BuildContext context, DefaultTasksList task) {

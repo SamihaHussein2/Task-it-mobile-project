@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:provider/provider.dart';
+import 'package:task_it/models/task.dart';
+import 'package:task_it/provider/task_provider.dart';
 import '/constants/custom_colors.dart';
 
 class AddTaskForm extends StatefulWidget {
@@ -31,6 +34,8 @@ class _AddTaskFormState extends State<AddTaskForm> {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
 
+    String title = '';
+    DateTime dateTime = DateTime.now();
     return Form(
       key: _formKey,
       child: ListView(
@@ -43,6 +48,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                 Container(
                   width: 250,
                   child: TextFormField(
+                    onChanged: (c) => title = c,
                     controller: titleController,
                     decoration: InputDecoration(
                       contentPadding:
@@ -64,24 +70,25 @@ class _AddTaskFormState extends State<AddTaskForm> {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                Container(
-                  width: 250,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      contentPadding:
-                          const EdgeInsets.symmetric(vertical: 24.0),
-                      labelText: 'desc',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      isDense: true,
-                    ),
-                  ),
-                ),
+                // Container(
+                //   width: 250,
+                //   child: TextFormField(
+                //     decoration: InputDecoration(
+                //       contentPadding:
+                //           const EdgeInsets.symmetric(vertical: 24.0),
+                //       labelText: 'desc',
+                //       border: OutlineInputBorder(
+                //         borderRadius: BorderRadius.circular(20),
+                //       ),
+                //       isDense: true,
+                //     ),
+                //   ),
+                // ),
                 const SizedBox(height: 20.0),
                 Container(
                     width: 250,
                     child: InputDatePickerFormField(
+                      onDateSubmitted: (c) => dateTime = c,
                       firstDate: DateTime.now(),
                       lastDate: DateTime(2050, 1, 1),
                       initialDate: DateTime.now(),
@@ -98,7 +105,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                   width: 250,
                   //height: 200,
                   child: DropdownButtonFormField(
-                    items: ['low', 'meduim', 'high']
+                    items: ['Personal', 'University', 'Work']
                         .map<DropdownMenuItem<String>>((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
@@ -108,7 +115,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                     decoration: const InputDecoration(
                         contentPadding: EdgeInsets.fromLTRB(0, 5.5, 0, 0),
                         labelStyle: TextStyle(),
-                        labelText: 'priority'),
+                        labelText: 'add to list'),
                     onChanged: (String? value) {},
                     // onChanged: (value) {
                     //   setState(() {
@@ -125,7 +132,11 @@ class _AddTaskFormState extends State<AddTaskForm> {
                         ? () {
                             if (_formKey.currentState!.validate()) {
                               // you'd often call a server or save the information in a database.
-
+                              // Provider.of<TaskProvider>(context).addTask(Task(
+                              //   id: '1',
+                              //   title: title,
+                              //   dateTime: dateTime,
+                              // ));
                             }
                           }
                         : null,
