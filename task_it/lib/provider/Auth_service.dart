@@ -11,38 +11,44 @@ class AuthenticationService {
     await _firebaseAuth.signOut();
   }
 
-  Future<bool> signIn(String email, String password) async {
+  Future<String?> signIn(String email, String password) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      return true;
+      return "Signed in";
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        print(e.message);
+        return e.message;
+      } else {
+        print(e.message);
+        return e.message;
       }
     } catch (e) {
       print(e);
     }
-    return false;
   }
 
-  Future<bool> signUp(String email, String password) async {
+  Future<String?> signUp(String email, String password) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-      return true;
+      return 'Signed Up';
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
+        print(e.message);
+        return e.message;
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
+        print(e.message);
+        return e.message;
+      } else {
+        print(e.message);
+        return e.message;
       }
     } catch (e) {
       print(e);
     }
-
-    return false;
   }
 }

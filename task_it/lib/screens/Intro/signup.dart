@@ -89,11 +89,11 @@ class _SignupformState extends State<Signupform> {
                         // SizedBox(
                         //   height: 10,
                         // ),
-                        Image.asset(
-                          "assets/logo/logo-final.png",
-                          height: 140,
-                          width: 100,
-                        ),
+                        // Image.asset(
+                        //   "assets/logo/logo-final.png",
+                        //   height: 140,
+                        //   width: 100,
+                        // ),
                         TextFormField(
                           controller: email,
                           autofocus: true,
@@ -204,10 +204,10 @@ class _SignupformState extends State<Signupform> {
                                       email.text.trim(),
                                       password.text.trim(),
                                     );
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
+                                // Navigator.push(
+                                //     context,
+                                //     MaterialPageRoute(
+                                //         builder: (context) => Login()));
                               } else {
                                 Scaffold.of(context).showSnackBar(new SnackBar(
                                     content:

@@ -59,6 +59,7 @@ class _LoginState extends State<Login> {
                       child: Column(
                         children: [
                           TextFormField(
+                            controller: email,
                             validator: (val) {
                               if (val == null || val.isEmpty) {
                                 return 'Please enter email';
@@ -87,6 +88,7 @@ class _LoginState extends State<Login> {
                             height: 10,
                           ),
                           TextFormField(
+                            controller: password,
                             obscureText: show,
                             validator: (val2) {
                               if (val2 == null || val2.isEmpty) {
@@ -124,13 +126,7 @@ class _LoginState extends State<Login> {
                                       email.text.trim(),
                                       password.text.trim(),
                                     );
-                                print(FirebaseAuth.instance.currentUser!.email);
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        //after validation goes to homepage
-                                        builder: (context) => Homepage()));
-                              } else {}
+                              }
                             },
 
                             //define shape el button
