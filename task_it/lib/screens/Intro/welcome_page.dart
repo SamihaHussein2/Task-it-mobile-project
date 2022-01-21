@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '/constants/custom_colors.dart';
 import '/screens/Intro/login.dart';
 import '/screens/Intro/signup.dart';
-import '/screens/user_account.dart';
-import '/spalsh.dart';
 import '../navscreens/main_page.dart';
 // ignore_for_file: file_names
 

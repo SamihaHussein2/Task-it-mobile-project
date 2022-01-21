@@ -1,7 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_it/screens/navscreens/homepage/homepage.dart';
 import '/screens/Intro/welcome_page.dart';
 
 class Splash extends StatefulWidget {
+  const Splash({Key? key}) : super(key: key);
+
   @override
   State<Splash> createState() => _SplashState();
 }
@@ -13,6 +18,15 @@ class _SplashState extends State<Splash> {
     _navigatetohome();
   }
 
+  _checkpages() {
+    final firebaseUser = context.watch<User?>();
+
+    if (firebaseUser != null) {
+      return Homepage();
+    }
+    return welcomepage();
+  }
+
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 2500), () {});
     Navigator.pushReplacement(
@@ -21,6 +35,7 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    _checkpages();
     return Scaffold(
         body: Container(
             alignment: Alignment.center,

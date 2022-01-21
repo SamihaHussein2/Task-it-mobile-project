@@ -37,6 +37,7 @@ dependencies:
   dotted_border: ^2.0.0+2
   modal_bottom_sheet: ^2.0.0
   timeline_tile: ^2.0.0
+  email_validator: '^2.0.0'
   
 
 

@@ -1,11 +1,14 @@
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
+import 'package:task_it/provider/Auth_service.dart';
+import 'package:task_it/screens/Intro/welcome_page.dart';
+import 'package:task_it/screens/navscreens/homepage/homepage.dart';
 import '/constants/custom_colors.dart';
 import 'appbar_register.dart';
-import '/spalsh.dart';
 import 'signup.dart';
-import '/screens/Intro/welcome_page.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -15,6 +18,12 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _pass = GlobalKey<FormState>();
+
+  final TextEditingController email = TextEditingController();
+  final TextEditingController password = TextEditingController();
+
+  bool show = true; //Button show password or hashed
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,6 +62,9 @@ class _LoginState extends State<Login> {
                             validator: (val) {
                               if (val == null || val.isEmpty) {
                                 return 'Please enter email';
+                              } else if (EmailValidator.validate(val) ==
+                                  false) {
+                                return 'Please Enter valid email';
                               }
                               return null;
                             },
@@ -75,7 +87,7 @@ class _LoginState extends State<Login> {
                             height: 10,
                           ),
                           TextFormField(
-                            key: _pass,
+                            obscureText: show,
                             validator: (val2) {
                               if (val2 == null || val2.isEmpty) {
                                 return 'Please enter password';
@@ -106,16 +118,19 @@ class _LoginState extends State<Login> {
                             height: 60,
                             color: CustomColors.YellowOrange,
                             onPressed: () {
-                              if (_formKey.currentState!.validate() &&
-                                  _pass.currentState!.validate()) {
-                                // If the form is valid, display a snackbar. In the real world,
-                                // you'd often call a server or save the information in a database.
+                              //print(FirebaseAuth.instance.currentUser!.email);
+                              if (_formKey.currentState!.validate()) {
+                                context.read<AuthenticationService>().signIn(
+                                      email.text.trim(),
+                                      password.text.trim(),
+                                    );
+                                print(FirebaseAuth.instance.currentUser!.email);
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         //after validation goes to homepage
-                                        builder: (context) => Login()));
-                              }
+                                        builder: (context) => Homepage()));
+                              } else {}
                             },
 
                             //define shape el button

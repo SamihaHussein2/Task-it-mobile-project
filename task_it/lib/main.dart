@@ -1,12 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-// import 'screens/homepage/homepage.dart';
-import 'screens/Intro/signup.dart';
-import 'screens/Intro/welcome_page.dart';
-import 'screens/user_account.dart';
+import 'package:provider/provider.dart';
+import 'package:task_it/provider/Auth_service.dart';
 import 'spalsh.dart';
-import 'screens/lists_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,12 +17,22 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     //edit the first page will be splash and then --> WelcomeHomepage (1st time only)
     //Splash --> homepage (after signing in or skip)
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Task it',
-      home: Splash(),
-      // themeMode: ThemeMode.system,
-      // home: TaskList(),
+    return MultiProvider(
+      providers: [
+        Provider<AuthenticationService>(
+          create: (_) => AuthenticationService(FirebaseAuth.instance),
+        ),
+        StreamProvider(
+          create: (context) =>
+              context.read<AuthenticationService>().authStateChanges,
+          initialData: null,
+        )
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Task it',
+        home: Splash(),
+      ),
     );
   }
 }

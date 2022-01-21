@@ -1,9 +1,10 @@
-class user {
-  String email;
-  String firstName;
-  String lastName;
-  String username;
-  int? password;
+class User {
+  String uid;
+  String? email;
 
-  user(this.email, this.firstName, this.lastName, this.username, this.password);
+  ///String fullname;
+  //String password;
+  //int points = 0;
+
+  User(this.uid, this.email);
 }
