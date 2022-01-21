@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:task_it/models/task.dart';
 //import 'package:hexcolor/hexcolor.dart';
 import '/constants/custom_colors.dart';
 
 class DefaultTasksList {
-  //final int id;
+  final int id;
   IconData? taskIcon;
   String? taskTitle;
   Color? backgroundColor;
@@ -12,10 +13,11 @@ class DefaultTasksList {
   num? numberOfUnfinishedTasks;
   num? numberOfCompletedTasks;
   List<Map<String,dynamic>>? desc;
+ // List<Task>? tasks;
   bool? isAddNewTask; //isLast
 
   DefaultTasksList(
-      {//required this.id,
+      {required this.id,
       this.taskIcon,
       this.taskTitle,
       this.backgroundColor,
@@ -24,11 +26,17 @@ class DefaultTasksList {
       this.numberOfUnfinishedTasks,
       this.numberOfCompletedTasks,
       this.desc,
+     // this.tasks,
       this.isAddNewTask = false}); //End of constructor
+
+      c(){
+        return this.desc;
+      }
 
   static List<DefaultTasksList> generateTasks() {
     return [
       DefaultTasksList(
+        id: 1,
         taskIcon: Icons.person_rounded,
         taskTitle: 'Personal',
         backgroundColor: Color(0xFF92C9DD),
@@ -85,6 +93,7 @@ class DefaultTasksList {
         ]
       ),
       DefaultTasksList(
+        id: 2,
         taskIcon: Icons.school_rounded,
         taskTitle: 'University',
         backgroundColor: Color(0xFFFFCF99),
@@ -94,6 +103,7 @@ class DefaultTasksList {
         numberOfCompletedTasks: 3,
       ),
       DefaultTasksList(
+        id: 3,
         taskIcon: Icons.shopping_basket_outlined,
         taskTitle: 'Groceries',
         backgroundColor: Color(0xFFEF8354),
@@ -103,7 +113,7 @@ class DefaultTasksList {
         numberOfCompletedTasks: 3,
       ),
       
-      DefaultTasksList(isAddNewTask: true),
+      DefaultTasksList(id: 0,isAddNewTask: true),
     ];
   }
 }
