@@ -255,8 +255,6 @@ packages:
     source: hosted
     version: "0.12.11"
   meta:
-<<<<<<< Updated upstream
-=======
     dependency: transitive
     description:
       name: meta
@@ -264,7 +262,6 @@ packages:
     source: hosted
     version: "1.7.0"
   mime:
->>>>>>> Stashed changes
     dependency: transitive
     description:
       name: mime
