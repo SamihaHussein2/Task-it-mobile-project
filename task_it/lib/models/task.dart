@@ -1,7 +1,17 @@
+import 'package:flutter/material.dart';
+
+import 'default_tasks_model.dart';
+
 class Task {
-  final int id;
-  final String title;
-  final String description;
-  Task(this.id, this.title,this.description);
+  String title;
+  DateTime? dateTime;
+//  DefaultTasksList list;
+  bool completed;
+
+  Task({@required this.title='', this.dateTime, this.completed = false});
+
+  void toggleCompleted() {
+    completed = !completed;
+  }
 }
   

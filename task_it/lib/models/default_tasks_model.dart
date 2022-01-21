@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '/constants/custom_colors.dart';
 
 class DefaultTasksList {
+  //final int id;
   IconData? taskIcon;
   String? taskTitle;
   Color? backgroundColor;
@@ -11,10 +12,11 @@ class DefaultTasksList {
   num? numberOfUnfinishedTasks;
   num? numberOfCompletedTasks;
   List<Map<String,dynamic>>? desc;
-  bool? isAddNewTask;
+  bool? isAddNewTask; //isLast
 
   DefaultTasksList(
-      {this.taskIcon,
+      {//required this.id,
+      this.taskIcon,
       this.taskTitle,
       this.backgroundColor,
       this.iconColor,
