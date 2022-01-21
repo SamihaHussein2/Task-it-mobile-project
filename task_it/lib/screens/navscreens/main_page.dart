@@ -1,8 +1,4 @@
-// Flutter Packages
 import 'package:flutter/material.dart';
-import 'package:share_plus/share_plus.dart';
-
-// App Files
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '/screens/navscreens/homepage/homepage.dart';
 import '/constants/custom_colors.dart';
@@ -19,8 +15,7 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  String appURL =
-      "https://play.google.com/store/apps/details?id=com.miu.taskit";
+  String appURL = "";
   int currentIndex = 0;
   List navBarPages = [Homepage(), TasksList()];
 
@@ -95,13 +90,9 @@ class _MainPageState extends State<MainPage> {
             color: Colors.grey,
           ),
           ListTile(
-              leading: IconButton(
-                icon: Icon(Icons.share),
-                onPressed: () {
-                  Share.share(appURL);
-                },
-              ),
-              title: Text("Share App")),
+            leading: Icon(Icons.share_rounded),
+            title: Text("Share App"),
+          ),
           ListTile(
             leading: Icon(Icons.toggle_on_rounded),
             title: Text("Theme"),
@@ -165,9 +156,5 @@ class _MainPageState extends State<MainPage> {
               alignment: Alignment.center,
               child: AddTaskForm(),
             ));
-  }
-
-  void _shareURL() {
-    Share.share(appURL);
   }
 }
