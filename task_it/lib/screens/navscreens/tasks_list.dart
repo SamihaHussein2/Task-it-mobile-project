@@ -42,7 +42,7 @@ class TasksList extends StatelessWidget {
 }
 
 class NotesCard extends StatelessWidget {
-  final Note note;
+  final Task note;
 
   NotesCard(this.note);
 

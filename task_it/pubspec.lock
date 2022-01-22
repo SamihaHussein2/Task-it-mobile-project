@@ -201,7 +201,7 @@ packages:
       name: flutter_slidable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.2.0"
+    version: "0.5.7"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -216,6 +216,7 @@ packages:
     dependency: "direct main"
     description:
       name: hexcolor
+<<<<<<< Updated upstream
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
@@ -223,6 +224,8 @@ packages:
     dependency: transitive
     description:
       name: http
+=======
+>>>>>>> Stashed changes
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.13.4"
