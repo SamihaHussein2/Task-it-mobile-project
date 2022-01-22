@@ -22,7 +22,7 @@ class register_appbar extends StatelessWidget implements PreferredSizeWidget {
         //systemOverlayStyle: SystemUiOverlayStyle.light, //badal brightness fl version el gedida
         leading: IconButton(
           onPressed: () {
-            Navigator.push(context,
+            Navigator.pushReplacement(context,
                 MaterialPageRoute(builder: (context) => welcomepage()));
           },
           icon: const Icon(Icons.arrow_back),

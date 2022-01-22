@@ -15,6 +15,8 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //String? cureent = FirebaseAuth.instance.currentUser?.uid.toString();
+
     int currentIndex = 0;
     final Stream<QuerySnapshot> users =
         FirebaseFirestore.instance.collection('users').snapshots();
@@ -199,6 +201,21 @@ class Account extends StatelessWidget {
                 onTap: () {
                   final check = context.read<AuthenticationService>().signOut();
 
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
+                },
+              ),
+            ),
+            Card(
+              color: CustomColors.YellowOrange,
+              child: ListTile(
+                title: Text("Delete Account"),
+                leading: Icon(Icons.delete),
+                onTap: () async {
+                  final check = await context
+                      .read<AuthenticationService>()
+                      .deleteAccount();
+                  print(check);
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Login()));
                 },

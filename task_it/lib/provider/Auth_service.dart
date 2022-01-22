@@ -32,6 +32,19 @@ class AuthenticationService {
     }
   }
 
+  Future<String?> deleteAccount() async {
+    try {
+      await FirebaseAuth.instance.currentUser!.delete();
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'requires-recent-login') {
+        print(
+            'The user must reauthenticate before this operation can be executed.');
+      } else {
+        return e.message;
+      }
+    }
+  }
+
   Future<String?> signUp(String email, String password) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(

@@ -20,10 +20,7 @@ class _TrophiesScreenState extends State<TrophiesScreen> {
             color: Color(0xFF1E4E5F),
           ),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => LeaderBoardScreen()),
-            );
+            Navigator.pop(context);
           },
         ),
         title: Text("Trophies"),
