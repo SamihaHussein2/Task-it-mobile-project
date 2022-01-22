@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:task_it/constants/custom_colors.dart';
 import 'package:task_it/models/task.dart';
 import 'package:task_it/provider/tasks_provider.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -73,4 +72,3 @@ class NotesCard extends StatelessWidget {
     );
   }
 }
-
