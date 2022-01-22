@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/Auth_service.dart';
@@ -13,6 +15,9 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int currentIndex = 0;
+    final Stream<QuerySnapshot> users =
+        FirebaseFirestore.instance.collection('users').snapshots();
     return Scaffold(
         resizeToAvoidBottomInset:
             false, // to pervent bottom overflowed when the keyboard appears
@@ -81,18 +86,36 @@ class Account extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(
-                    "Salma Tamer",
-                    style: TextStyle(color: CustomColors.Midnight),
-                  ),
-                  /* SizedBox(
-                    height: 5,
-                  ), */
-                  Text(
-                    "Salma12@gmail.com",
-                    style: TextStyle(
-                        fontSize: 12, color: CustomColors.YellowOrange),
-                  ),
+                  StreamBuilder<QuerySnapshot>(
+                      stream: users,
+                      builder: (BuildContext context,
+                          AsyncSnapshot<QuerySnapshot> snapshot) {
+                        if (snapshot.hasError) {
+                          return Text('Something went wrong');
+                        }
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Text('loading');
+                        }
+                        final data = snapshot.requireData;
+                        return Column(
+                          children: [
+                            Text(
+                              "${data.docs[currentIndex]['name']}",
+                              style: TextStyle(color: CustomColors.Midnight),
+                            ),
+                            SizedBox(
+                              height: 5,
+                            ),
+                            Text(
+                              "${data.docs[currentIndex]['email']}",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: CustomColors.YellowOrange),
+                            ),
+                          ],
+                        );
+                      }),
                   SizedBox(
                     height: 10,
                   ),

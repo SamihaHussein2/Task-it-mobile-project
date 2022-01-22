@@ -1,4 +1,4 @@
-class User {
+class UserData {
   String uid;
   String? email;
 
@@ -6,5 +6,5 @@ class User {
   //String password;
   //int points = 0;
 
-  User(this.uid, this.email);
+  UserData(this.uid, this.email);
 }

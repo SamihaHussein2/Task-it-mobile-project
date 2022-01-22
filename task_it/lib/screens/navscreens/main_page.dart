@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -24,7 +25,11 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final userInfo = FirebaseAuth.instance.currentUser?.uid;
+
     final user = FirebaseAuth.instance.currentUser?.email;
+    final Stream<QuerySnapshot> users =
+        FirebaseFirestore.instance.collection('users').snapshots();
     //final username = FirebaseAuth.instance.currentUser?.displayName;
 
     return Scaffold(
@@ -46,9 +51,22 @@ class _MainPageState extends State<MainPage> {
         elevation: 0,
         title: Row(
           children: [
+            StreamBuilder<QuerySnapshot>(
+                stream: users,
+                builder: (BuildContext context,
+                    AsyncSnapshot<QuerySnapshot> snapshot) {
+                  if (snapshot.hasError) {
+                    return Text('Something went wrong');
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Text('loading');
+                  }
+                  final data = snapshot.requireData;
+                  return Text("Hello, ${data.docs[currentIndex]['name']}",
+                      style: TextStyle(
+                          color: CustomColors.Midnight, fontSize: 20));
+                }),
             // SizedBox(width: 10),
-            Text('Hello, User!',
-                style: TextStyle(color: CustomColors.Midnight, fontSize: 20))
           ],
         ),
       ),
@@ -56,15 +74,27 @@ class _MainPageState extends State<MainPage> {
           child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          UserAccountsDrawerHeader(
-            decoration: BoxDecoration(color: CustomColors.Midnight),
-            accountName: Text("USER"),
-            accountEmail: Text(user!),
-            currentAccountPicture: CircleAvatar(
-              radius: 50,
-              backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
-            ),
-          ),
+          StreamBuilder<QuerySnapshot>(
+              stream: users,
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot> snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong');
+                }
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Text('loading');
+                }
+                final data = snapshot.requireData;
+                return UserAccountsDrawerHeader(
+                  decoration: BoxDecoration(color: CustomColors.Midnight),
+                  accountName: Text(data.docs[currentIndex]['name']),
+                  accountEmail: Text(data.docs[currentIndex]['email']),
+                  currentAccountPicture: CircleAvatar(
+                    radius: 50,
+                    backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
+                  ),
+                );
+              }),
           Divider(
             color: Colors.white,
           ),

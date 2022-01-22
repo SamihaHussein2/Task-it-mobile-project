@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+//import 'package:task_it/models/user.dart';
 import 'package:task_it/provider/Auth_service.dart';
 import '/constants/custom_colors.dart';
 import '/screens/Intro/appbar_register.dart';
@@ -35,6 +38,7 @@ class Signupform extends StatefulWidget {
 class _SignupformState extends State<Signupform> {
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController name = TextEditingController();
   final TextEditingController email = TextEditingController();
   final TextEditingController password = TextEditingController();
   final TextEditingController confirm = TextEditingController();
@@ -64,36 +68,28 @@ class _SignupformState extends State<Signupform> {
                     key: _formKey,
                     child: Column(
                       children: [
-                        // TextFormField(
-                        //   //maxLength: 20,
-                        //   autofocus: true,
-                        //   validator: (val) {
-                        //     if (val == null || val.isEmpty) {
-                        //       return 'Please enter some text';
-                        //     }
-                        //     return null;
-                        //   },
-                        //   decoration: InputDecoration(
-                        //     labelText: "Full Name",
-                        //     fillColor: Color(0xff2179ae),
-                        //     prefixIcon: Icon(
-                        //       Icons.person,
-                        //       color: CustomColors.Midnight,
-                        //     ),
-                        //     enabledBorder: UnderlineInputBorder(
-                        //       borderSide:
-                        //           BorderSide(color: CustomColors.YellowOrange),
-                        //     ),
-                        //   ),
-                        // ),
-                        // SizedBox(
-                        //   height: 10,
-                        // ),
-                        // Image.asset(
-                        //   "assets/logo/logo-final.png",
-                        //   height: 140,
-                        //   width: 100,
-                        // ),
+                        TextFormField(
+                          controller: name,
+                          //maxLength: 20,
+                          autofocus: true,
+                          validator: (val) {
+                            if (val == null || val.isEmpty) {
+                              return 'Please enter some text';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                            labelText: "Full Name",
+                            fillColor: Color(0xff2179ae),
+                            enabledBorder: UnderlineInputBorder(
+                              borderSide:
+                                  BorderSide(color: CustomColors.YellowOrange),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
                         TextFormField(
                           controller: email,
                           autofocus: true,
@@ -206,17 +202,31 @@ class _SignupformState extends State<Signupform> {
                                       email.text.trim(),
                                       password.text.trim(),
                                     );
-                                print(check.toString());
+                                print(check);
                                 final snackBar = SnackBar(
                                   content: Text(check.toString()),
                                 );
                                 ScaffoldMessenger.of(context)
                                     .showSnackBar(snackBar);
+                                print(check.toString());
 
                                 if (check.toString() == "Signed Up") {
+                                  User? user =
+                                      FirebaseAuth.instance.currentUser;
+                                  FirebaseFirestore.instance
+                                      .collection("users")
+                                      .doc(user?.uid)
+                                      .set({
+                                    'uid': user?.uid,
+                                    'name': name.text,
+                                    'email': email.text,
+                                    'password': password.text
+                                  });
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
+                                          //change page to the homepage
                                           builder: (context) => Login()));
                                 }
                               } else {
