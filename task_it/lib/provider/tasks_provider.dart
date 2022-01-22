@@ -4,9 +4,9 @@ import 'package:task_it/models/task.dart';
 
 class TasksProvider extends ChangeNotifier {
   //List of note
-  List<Note> _notes = [];
+  List<Task> _notes = [];
 
-  List<Note> get getNotes {
+  List<Task> get getNotes {
     return _notes;
   }
 
@@ -17,7 +17,7 @@ class TasksProvider extends ChangeNotifier {
 
   void addNewNote(String title, String description) {
     //Note object
-    Note note = Note(title, description);
+    Task note = Task(title, description);
     _notes.add(note);
     notifyListeners();
   }
