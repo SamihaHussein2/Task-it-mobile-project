@@ -5,6 +5,7 @@ import 'package:task_it/models/task.dart';
 import 'package:task_it/provider/tasks_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_it/screens/navscreens/homepage/checkbox.dart';
 
 import '../add_new_task.dart';
 
@@ -67,7 +68,9 @@ class NotesCard extends StatelessWidget {
             note.description,
             style: TextStyle(fontSize: 17),
           ),
+          CheckBox(),
         ],
+        
       ),
     );
   }
