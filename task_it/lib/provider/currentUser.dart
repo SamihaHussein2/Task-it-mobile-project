@@ -1,65 +1,44 @@
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import '../models/user.dart';
 
-class ProviderUser extends ChangeNotifier {
-  String? _uid;
-  String? _email;
+class ProviderUser {
+  final auth.FirebaseAuth _firebaseAuth = auth.FirebaseAuth.instance;
 
-  String? get getUserid => _uid;
-  String? get getUserEmail => _email;
-
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
-  Future<bool> signUpUser(String email, String password) async {
-    bool returnVal = false;
-
-    try {
-      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
-          email: email,
-          password:
-              password); //AuthResult --> UserCredential (new version flutter)
-      if (userCredential.user != null) {
-        _uid = userCredential.user?.uid;
-        _email = userCredential.user?.email;
-        return returnVal = true;
-      }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
-      } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-      }
-    } catch (e) {
-      print(e);
+  User? _userFromFirebase(auth.User? user) {
+    if (user == null) {
+      return null;
     }
-
-    return returnVal;
+    return User(user.uid, user.email);
   }
 
-  Future<bool> loginUser(String email, String password) async {
-    bool returnVal = false;
+  Stream<User?> get user {
+    return _firebaseAuth.authStateChanges().map(_userFromFirebase);
+  }
 
-    try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-          email: email,
-          password:
-              password); //AuthResult --> UserCredential (new version flutter)
+  Future<User?> signInWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    final credential = await _firebaseAuth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return _userFromFirebase(credential.user);
+  }
 
-      if (userCredential.user != null) {
-        _uid = userCredential.user?.uid;
-        _email = userCredential.user?.email;
-        returnVal = true;
-      }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        print('No user found for that email.');
-      } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
-      }
-    } catch (e) {
-      print(e);
-    }
+  Future<User?> createUserWithEmailAndPassword(
+    String email,
+    String password,
+  ) async {
+    final credential = await _firebaseAuth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    return _userFromFirebase(credential.user);
+  }
 
-    return returnVal;
+  Future<void> signOut() async {
+    return await _firebaseAuth.signOut();
   }
 }

@@ -18,14 +18,14 @@ class _SplashState extends State<Splash> {
     _navigatetohome();
   }
 
-  _checkpages() {
-    final firebaseUser = context.watch<User?>();
+  // _checkpages() {
+  //   final firebaseUser = context.watch<User?>();
 
-    if (firebaseUser != null) {
-      return Homepage();
-    }
-    return welcomepage();
-  }
+  //   if (firebaseUser != null) {
+  //     return Homepage();
+  //   }
+  //   return welcomepage();
+  // }
 
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 2500), () {});
@@ -35,7 +35,7 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    _checkpages();
+    //_checkpages();
     return Scaffold(
         body: Container(
             alignment: Alignment.center,

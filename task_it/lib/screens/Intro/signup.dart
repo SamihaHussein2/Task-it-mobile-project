@@ -155,7 +155,7 @@ class _SignupformState extends State<Signupform> {
                         ),
                         TextFormField(
                           controller: confirm,
-                          maxLength: 8,
+                          //maxLength: 8,
                           obscureText: showConfirm,
                           autofocus: true,
                           validator: (val) {
