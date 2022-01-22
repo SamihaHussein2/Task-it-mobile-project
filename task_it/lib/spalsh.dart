@@ -18,15 +18,6 @@ class _SplashState extends State<Splash> {
     _navigatetohome();
   }
 
-  // _checkpages() {
-  //   final firebaseUser = context.watch<User?>();
-
-  //   if (firebaseUser != null) {
-  //     return Homepage();
-  //   }
-  //   return welcomepage();
-  // }
-
   _navigatetohome() async {
     await Future.delayed(Duration(milliseconds: 2500), () {});
     Navigator.pushReplacement(
@@ -38,7 +29,6 @@ class _SplashState extends State<Splash> {
     //check user logged in or not
     final user = FirebaseAuth.instance.currentUser?.email;
     print(user);
-    //_checkpages();
     return Scaffold(
         body: Container(
             alignment: Alignment.center,

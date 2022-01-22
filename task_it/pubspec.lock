@@ -195,13 +195,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
-  flutter_slidable:
-    dependency: "direct main"
-    description:
-      name: flutter_slidable
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.5.7"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -216,7 +209,6 @@ packages:
     dependency: "direct main"
     description:
       name: hexcolor
-<<<<<<< Updated upstream
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
@@ -224,8 +216,6 @@ packages:
     dependency: transitive
     description:
       name: http
-=======
->>>>>>> Stashed changes
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.13.4"
@@ -292,6 +282,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.12.11"
+  material_color_utilities:
+    dependency: transitive
+    description:
+      name: material_color_utilities
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.3"
   meta:
     dependency: transitive
     description:
@@ -457,7 +454,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.3"
+    version: "0.4.8"
   timeline_tile:
     dependency: "direct main"
     description:
