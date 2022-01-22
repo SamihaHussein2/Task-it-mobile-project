@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_it/screens/trophies.dart';
 import '../provider/Auth_service.dart';
 import '/constants/custom_colors.dart';
-import '/models/profile_icons.dart';
-import '/screens/Intro/welcome_page.dart';
+import 'package:image_picker/image_picker.dart';
 import '/spalsh.dart';
 import 'Intro/login.dart';
 import 'navscreens/main_page.dart';
@@ -178,6 +178,13 @@ class Account extends StatelessWidget {
                     ],
                   ),
                   trailing: Icon(Icons.more_vert),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            //change page to the homepage
+                            builder: (context) => TrophiesScreen()));
+                  },
                 ),
               ],
             )),
