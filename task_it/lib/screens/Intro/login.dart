@@ -119,13 +119,37 @@ class _LoginState extends State<Login> {
                             minWidth: 300, //badal el width fl material app
                             height: 60,
                             color: CustomColors.YellowOrange,
-                            onPressed: () {
+                            onPressed: () async {
                               //print(FirebaseAuth.instance.currentUser!.email);
                               if (_formKey.currentState!.validate()) {
-                                context.read<AuthenticationService>().signIn(
+                                //working with Auth_service
+                                final check = await context
+                                    .read<AuthenticationService>()
+                                    .signIn(
                                       email.text.trim(),
                                       password.text.trim(),
                                     );
+
+                                final snackBar = SnackBar(
+                                  content: Text(check.toString()),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+
+                                if (check.toString() == "Signed in") {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Homepage()));
+                                }
+                                //display error type in dialog window
+                                // showDialog(
+                                //   context: context,
+                                //   builder: (BuildContext context) =>
+                                //       _buildPopupDialog(
+                                //           context, check.toString()),
+                                // );
+
                               }
                             },
 

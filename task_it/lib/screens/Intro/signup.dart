@@ -197,17 +197,28 @@ class _SignupformState extends State<Signupform> {
                           minWidth: 300, //badal el width fl material app
                           height: 40,
                           color: Color.fromRGBO(255, 177, 86, 1),
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState!.validate()) {
                               if (confirm.text == password.text) {
-                                context.read<AuthenticationService>().signUp(
+                                final check = await context
+                                    .read<AuthenticationService>()
+                                    .signUp(
                                       email.text.trim(),
                                       password.text.trim(),
                                     );
-                                // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => Login()));
+                                print(check.toString());
+                                final snackBar = SnackBar(
+                                  content: Text(check.toString()),
+                                );
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(snackBar);
+
+                                if (check.toString() == "Signed Up") {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Login()));
+                                }
                               } else {
                                 Scaffold.of(context).showSnackBar(new SnackBar(
                                     content:
