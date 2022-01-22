@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:task_it/screens/trophies.dart';
 import '../provider/Auth_service.dart';
 import '/constants/custom_colors.dart';
-import 'package:image_picker/image_picker.dart';
+//import 'package:image_picker/image_picker.dart';
 import '/spalsh.dart';
 import 'Intro/login.dart';
 import 'navscreens/main_page.dart';
