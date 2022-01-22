@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:task_it/constants/custom_colors.dart';
 
-class Task {
-  
-  String id;
+class Note {
   String title;
-  DateTime? dateTime;
-  bool completed;
+  String description;
 
-  Task({
-    required this.id,
-    required this.title,
-    this.dateTime,
-    this.completed = false,
-  });
-
-    void toggle() {
-	completed = !completed;
-}
+  Note(this.title, this.description);
 }

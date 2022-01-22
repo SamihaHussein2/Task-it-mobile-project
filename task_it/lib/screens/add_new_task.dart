@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/models/task.dart';
-import 'package:task_it/provider/task_provider.dart';
+import 'package:task_it/provider/tasks_provider.dart';
 import '/constants/custom_colors.dart';
-
 class AddTaskForm extends StatefulWidget {
   @override
   State<AddTaskForm> createState() => _AddTaskFormState();
@@ -12,15 +11,22 @@ class AddTaskForm extends StatefulWidget {
 
 class _AddTaskFormState extends State<AddTaskForm> {
   bool isTaskTitleFilled = false;
+  bool isTaskDescFilled = false;
 
   late TextEditingController titleController;
+  late TextEditingController descController;
   @override
   void initState() {
     super.initState();
     titleController = TextEditingController();
+    descController = TextEditingController();
     titleController.addListener(() {
       final isTaskTitleFilled = titleController.text.isNotEmpty;
       setState(() => this.isTaskTitleFilled = isTaskTitleFilled);
+    });
+    descController.addListener(() {
+      final isTaskTitleFilled = descController.text.isNotEmpty;
+      setState(() => this.isTaskDescFilled = isTaskDescFilled);
     });
   }
 
@@ -34,8 +40,8 @@ class _AddTaskFormState extends State<AddTaskForm> {
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
 
-    String title = '';
-    DateTime dateTime = DateTime.now();
+    String titleText = '';
+    String descriptionText = '';
     return Form(
       key: _formKey,
       child: ListView(
@@ -45,10 +51,12 @@ class _AddTaskFormState extends State<AddTaskForm> {
           Center(
             child: Column(
               children: [
+                Text("Add New Task!",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 22 ),),
+                const SizedBox(height: 20.0),
                 Container(
                   width: 250,
                   child: TextFormField(
-                    onChanged: (c) => title = c,
+                    onChanged: (c) => titleText = c,
                     controller: titleController,
                     decoration: InputDecoration(
                       contentPadding:
@@ -61,46 +69,52 @@ class _AddTaskFormState extends State<AddTaskForm> {
                     ),
                     validator: (value) {
                       if (value == null ||
-                          value.isEmpty ||
-                          value.length > 100) {
-                        return 'not accepted title';
+                          value.isEmpty) {
+                        return 'no title';
                       }
                       return null;
                     },
                   ),
                 ),
                 const SizedBox(height: 20.0),
+               Container(
+                  width: 350,
+                  child: TextFormField(
+                    onChanged: (c) => descriptionText = c,
+                    decoration: InputDecoration(
+                      contentPadding:
+                          const EdgeInsets.symmetric(vertical: 16.0),
+                      labelText: 'desc',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      isDense: true,
+                    ),
+                    // validator: (value) {
+                    //   if (value == null ||
+                    //       value.isEmpty) {
+                    //     return 'no desc';
+                    //   }
+                    //   return null;
+                    // },
+                  ),
+                ),
+                const SizedBox(height: 20.0),
                 // Container(
-                //   width: 250,
-                //   child: TextFormField(
-                //     decoration: InputDecoration(
-                //       contentPadding:
-                //           const EdgeInsets.symmetric(vertical: 24.0),
-                //       labelText: 'desc',
-                //       border: OutlineInputBorder(
-                //         borderRadius: BorderRadius.circular(20),
-                //       ),
-                //       isDense: true,
-                //     ),
-                //   ),
-                // ),
-                const SizedBox(height: 20.0),
-                Container(
-                    width: 250,
-                    child: InputDatePickerFormField(
-                      onDateSubmitted: (c) => dateTime = c,
-                      firstDate: DateTime.now(),
-                      lastDate: DateTime(2050, 1, 1),
-                      initialDate: DateTime.now(),
-                    )),
-                const SizedBox(height: 20.0),
-                Container(
-                    // width: 250,
-                    // height: 200,
-                    child: TimePickerDialog(
-                  initialTime: TimeOfDay.now(),
-                )),
-                const SizedBox(height: 20.0),
+                //     width: 250,
+                //     child: InputDatePickerFormField(
+                //       firstDate: DateTime.now(),
+                //       lastDate: DateTime(2050, 1, 1),
+                //       initialDate: DateTime.now(),
+                // //     )),
+                // const SizedBox(height: 20.0),
+                // Container(
+                //     // width: 250,
+                //     // height: 200,
+                //     child: TimePickerDialog(
+                //   initialTime: TimeOfDay.now(),
+                // )),
+                // const SizedBox(height: 20.0),
                 Container(
                   width: 250,
                   //height: 200,
@@ -137,6 +151,7 @@ class _AddTaskFormState extends State<AddTaskForm> {
                               //   title: title,
                               //   dateTime: dateTime,
                               // ));
+                             builder: (context)=>  Provider.of<TasksProvider>(context, listen: false).addNewNote(titleText, descriptionText);
                             }
                           }
                         : null,

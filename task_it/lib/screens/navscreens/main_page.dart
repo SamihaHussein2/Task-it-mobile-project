@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:share_plus/share_plus.dart';
-
 import '/screens/navscreens/homepage/homepage.dart';
 import '/constants/custom_colors.dart';
 import '/screens/add_new_task.dart';
@@ -20,7 +19,7 @@ class _MainPageState extends State<MainPage> {
   String appURL =
       "https://play.google.com/store/apps/details?id=com.miu.taskit";
   int currentIndex = 0;
-  List navBarPages = [Homepage(), TasksList()];
+  List navBarPages = [Homepage(), TasksListScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -166,7 +165,7 @@ class _MainPageState extends State<MainPage> {
         context: ctx,
         builder: (ctx) => Container(
               //width: 100,
-              height: 500,
+              height: 800,
               color: Colors.white,
               alignment: Alignment.center,
               child: AddTaskForm(),
