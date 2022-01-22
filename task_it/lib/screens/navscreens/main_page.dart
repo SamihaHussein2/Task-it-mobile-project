@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:share_plus/share_plus.dart';
@@ -23,6 +24,9 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser?.email;
+    //final username = FirebaseAuth.instance.currentUser?.displayName;
+
     return Scaffold(
       appBar: AppBar(
         leading: Builder(
@@ -54,8 +58,8 @@ class _MainPageState extends State<MainPage> {
         children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: CustomColors.Midnight),
-            accountName: Text('Salma Tamer'),
-            accountEmail: Text('salma12@gmail.com'),
+            accountName: Text("USER"),
+            accountEmail: Text(user!),
             currentAccountPicture: CircleAvatar(
               radius: 50,
               backgroundImage: AssetImage("assets/avatar/avatar.jpg"),

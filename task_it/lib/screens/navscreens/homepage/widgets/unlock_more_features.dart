@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:task_it/provider/Auth_service.dart';
 import '/spalsh.dart';
 import '/screens/Intro/login.dart';
 import '/constants/custom_colors.dart';
@@ -63,11 +66,11 @@ class UnlockMoreFeatures extends StatelessWidget {
               child: IconButton(
                 icon: Icon(Icons.login),
                 color: CustomColors.SeaShell,
-                onPressed: () => {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Login()),
-                  )
+                onPressed: () {
+                  final check = context.read<AuthenticationService>().signOut();
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
                 },
               ),
             ),
@@ -76,4 +79,26 @@ class UnlockMoreFeatures extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildPopupDialog(BuildContext context, String text) {
+  return new AlertDialog(
+    title: const Text('Popup example'),
+    content: new Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(text),
+      ],
+    ),
+    actions: <Widget>[
+      new FlatButton(
+        onPressed: () {
+          Navigator.of(context).pop();
+        },
+        textColor: Theme.of(context).primaryColor,
+        child: const Text('Close'),
+      ),
+    ],
+  );
 }

@@ -35,6 +35,9 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
+    //check user logged in or not
+    final user = FirebaseAuth.instance.currentUser?.email;
+    print(user);
     //_checkpages();
     return Scaffold(
         body: Container(

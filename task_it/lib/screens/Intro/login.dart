@@ -4,7 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/provider/Auth_service.dart';
-import 'package:task_it/screens/navscreens/homepage/homepage.dart';
+import '../navscreens/main_page.dart';
 import '/constants/custom_colors.dart';
 import 'appbar_register.dart';
 import 'signup.dart';
@@ -128,7 +128,9 @@ class _LoginState extends State<Login> {
                                       email.text.trim(),
                                       password.text.trim(),
                                     );
-
+                                // final user =
+                                //     FirebaseAuth.instance.currentUser?.email;
+                                // print(user);
                                 final snackBar = SnackBar(
                                   content: Text(check.toString()),
                                 );
@@ -139,7 +141,7 @@ class _LoginState extends State<Login> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => Homepage()));
+                                          builder: (context) => MainPage()));
                                 }
                                 //display error type in dialog window
                                 // showDialog(

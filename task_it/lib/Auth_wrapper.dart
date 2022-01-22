@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/screens/Intro/login.dart';
 import 'package:task_it/screens/navscreens/homepage/homepage.dart';
+import 'package:task_it/screens/navscreens/main_page.dart';
 import 'package:task_it/spalsh.dart';
 
 class AuthWrapper extends StatelessWidget {
@@ -12,9 +13,9 @@ class AuthWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final firebaseUser = context.watch<User?>();
-    if (firebaseUser != null) {
-      return Login();
+    final user = FirebaseAuth.instance.currentUser?.uid;
+    if (user != null) {
+      return MainPage();
     }
     return Splash();
   }

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../provider/Auth_service.dart';
 import '/constants/custom_colors.dart';
 import '/models/profile_icons.dart';
 import '/screens/Intro/welcome_page.dart';
 import '/spalsh.dart';
+import 'Intro/login.dart';
 import 'navscreens/main_page.dart';
 
 class Account extends StatelessWidget {
@@ -163,6 +166,12 @@ class Account extends StatelessWidget {
               child: ListTile(
                 title: Text("Logout"),
                 leading: Icon(Icons.logout),
+                onTap: () {
+                  final check = context.read<AuthenticationService>().signOut();
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Login()));
+                },
               ),
             )
           ],
