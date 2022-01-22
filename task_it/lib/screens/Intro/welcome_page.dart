@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '/constants/custom_colors.dart';
 import '/screens/Intro/login.dart';
 import '/screens/Intro/signup.dart';
-import '../navscreens/main_page.dart';
+import '../navscreens/main_page_unregistered.dart';
 // ignore_for_file: file_names
 
 class welcomepage extends StatelessWidget {
@@ -128,7 +128,8 @@ class welcomepage extends StatelessWidget {
                                 context,
                                 MaterialPageRoute(
                                     //change page to the homepage
-                                    builder: (context) => MainPage()));
+                                    builder: (context) =>
+                                        MainPageUnregistered()));
                           },
                       ),
                     )

@@ -17,6 +17,7 @@ class AuthWrapper extends StatelessWidget {
     if (user != null) {
       return MainPage();
     }
+
     return Splash();
   }
 }
