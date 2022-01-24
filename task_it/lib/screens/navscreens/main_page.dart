@@ -25,11 +25,12 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-    final userInfo = FirebaseAuth.instance.currentUser?.uid;
+    final userID = FirebaseAuth.instance.currentUser?.uid;
+    final users = FirebaseFirestore.instance.collection('users');
+    print(userID);
 
-    final user = FirebaseAuth.instance.currentUser?.email;
-    final Stream<QuerySnapshot> users =
-        FirebaseFirestore.instance.collection('users').snapshots();
+    // final user = FirebaseAuth.instance.currentUser?.email;
+    //     FirebaseFirestore.instance.collection('users').snapshots();
     //final username = FirebaseAuth.instance.currentUser?.displayName;
 
     return Scaffold(
@@ -49,52 +50,64 @@ class _MainPageState extends State<MainPage> {
         ),
         backgroundColor: CustomColors.Cultured,
         elevation: 0,
-        title: Row(
-          children: [
-            StreamBuilder<QuerySnapshot>(
-                stream: users,
-                builder: (BuildContext context,
-                    AsyncSnapshot<QuerySnapshot> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text('Something went wrong');
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Text('loading');
-                  }
-                  final data = snapshot.requireData;
-                  return Text("Hello, ${data.docs[currentIndex]['name']}",
-                      style: TextStyle(
-                          color: CustomColors.Midnight, fontSize: 20));
-                }),
-            // SizedBox(width: 10),
-          ],
+        title: FutureBuilder<DocumentSnapshot>(
+          future: users.doc(userID).get(),
+          builder:
+              (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+            if (snapshot.hasError) {
+              return Text("Something went wrong");
+            }
+
+            if (snapshot.hasData && !snapshot.data!.exists) {
+              return Text("Document does not exist");
+            }
+
+            if (snapshot.connectionState == ConnectionState.done) {
+              Map<String, dynamic> data =
+                  snapshot.data!.data() as Map<String, dynamic>;
+              return Text("Hello, ${data['Full Name']}",
+                  style: TextStyle(color: CustomColors.Midnight, fontSize: 20));
+            }
+            return Text("user");
+          },
         ),
       ),
       drawer: Drawer(
           child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          StreamBuilder<QuerySnapshot>(
-              stream: users,
-              builder: (BuildContext context,
-                  AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (snapshot.hasError) {
-                  return Text('Something went wrong');
-                }
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Text('loading');
-                }
-                final data = snapshot.requireData;
-                return UserAccountsDrawerHeader(
-                  decoration: BoxDecoration(color: CustomColors.Midnight),
-                  accountName: Text(data.docs[currentIndex]['name']),
-                  accountEmail: Text(data.docs[currentIndex]['email']),
-                  currentAccountPicture: CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
-                  ),
+          FutureBuilder<DocumentSnapshot>(
+            future: users.doc(userID).get(),
+            builder: (BuildContext context,
+                AsyncSnapshot<DocumentSnapshot> snapshot) {
+              if (snapshot.hasError) {
+                return Text("Something went wrong");
+              }
+
+              if (snapshot.hasData && !snapshot.data!.exists) {
+                return Text("Document does not exist");
+              }
+
+              if (snapshot.connectionState == ConnectionState.done) {
+                Map<String, dynamic> data =
+                    snapshot.data!.data() as Map<String, dynamic>;
+                return Column(
+                  children: [
+                    UserAccountsDrawerHeader(
+                      decoration: BoxDecoration(color: CustomColors.Midnight),
+                      accountName: Text('${data['Full Name']}'),
+                      accountEmail: Text('${data['email']}'),
+                      currentAccountPicture: CircleAvatar(
+                        radius: 50,
+                        backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
+                      ),
+                    ),
+                  ],
                 );
-              }),
+              }
+              return Text("loading");
+            },
+          ),
           Divider(
             color: Colors.white,
           ),

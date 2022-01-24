@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/Auth_wrapper.dart';
 import 'package:task_it/provider/Auth_service.dart';
-import 'spalsh.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

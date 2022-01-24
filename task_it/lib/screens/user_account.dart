@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_it/provider/Firestore_services.dart';
 import 'package:task_it/screens/trophies.dart';
 import '../provider/Auth_service.dart';
 import '/constants/custom_colors.dart';
@@ -15,11 +16,9 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //String? cureent = FirebaseAuth.instance.currentUser?.uid.toString();
-
-    int currentIndex = 0;
-    final Stream<QuerySnapshot> users =
-        FirebaseFirestore.instance.collection('users').snapshots();
+    final userID = FirebaseAuth.instance.currentUser?.uid;
+    final users = FirebaseFirestore.instance.collection('users');
+    print(userID);
     return Scaffold(
         resizeToAvoidBottomInset:
             false, // to pervent bottom overflowed when the keyboard appears
@@ -88,36 +87,36 @@ class Account extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  StreamBuilder<QuerySnapshot>(
-                      stream: users,
-                      builder: (BuildContext context,
-                          AsyncSnapshot<QuerySnapshot> snapshot) {
-                        if (snapshot.hasError) {
-                          return Text('Something went wrong');
-                        }
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return Text('loading');
-                        }
-                        final data = snapshot.requireData;
+                  FutureBuilder<DocumentSnapshot>(
+                    future: users.doc(userID).get(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<DocumentSnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return Text("Something went wrong");
+                      }
+
+                      if (snapshot.hasData && !snapshot.data!.exists) {
+                        return Text("Document does not exist");
+                      }
+
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        Map<String, dynamic> data =
+                            snapshot.data!.data() as Map<String, dynamic>;
                         return Column(
                           children: [
                             Text(
-                              "${data.docs[currentIndex]['name']}",
-                              style: TextStyle(color: CustomColors.Midnight),
-                            ),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text(
-                              "${data.docs[currentIndex]['email']}",
+                              "${data['Full Name']}",
                               style: TextStyle(
-                                  fontSize: 12,
-                                  color: CustomColors.YellowOrange),
+                                  fontFamily: 'Montserrat',
+                                  fontSize: 25,
+                                  color: CustomColors.Midnight),
                             ),
                           ],
                         );
-                      }),
+                      }
+                      return Text("loading");
+                    },
+                  ),
                   SizedBox(
                     height: 10,
                   ),
@@ -150,50 +149,54 @@ class Account extends StatelessWidget {
               height: 10,
             ),
             Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15)),
                 child: Column(
-              children: [
-                ListTile(
-                  tileColor: CustomColors.YellowOrange,
-                  leading: Icon(Icons.emoji_events),
-                  title: Text("Trophies"),
-                ),
-                ListTile(
-                  leading: Wrap(
-                    spacing: 20,
-                    children: [
-                      Image.asset(
-                        "assets/trophies/trophy1.png",
-                        width: 30,
+                  children: [
+                    ListTile(
+                      tileColor: CustomColors.YellowOrange,
+                      leading: Icon(Icons.emoji_events),
+                      title: Text("Trophies"),
+                    ),
+                    ListTile(
+                      leading: Wrap(
+                        spacing: 20,
+                        children: [
+                          Image.asset(
+                            "assets/trophies/trophy1.png",
+                            width: 30,
+                          ),
+                          Image.asset(
+                            "assets/trophies/trophy2.png",
+                            width: 30,
+                          ),
+                          Image.asset(
+                            "assets/trophies/trophy3.png",
+                            width: 30,
+                          ),
+                          Image.asset(
+                            "assets/trophies/grey_trophy.png",
+                            width: 30,
+                          ),
+                        ],
                       ),
-                      Image.asset(
-                        "assets/trophies/trophy2.png",
-                        width: 30,
-                      ),
-                      Image.asset(
-                        "assets/trophies/trophy3.png",
-                        width: 30,
-                      ),
-                      Image.asset(
-                        "assets/trophies/grey_trophy.png",
-                        width: 30,
-                      ),
-                    ],
-                  ),
-                  trailing: Icon(Icons.more_vert),
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            //change page to the homepage
-                            builder: (context) => TrophiesScreen()));
-                  },
-                ),
-              ],
-            )),
+                      trailing: Icon(Icons.more_vert),
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                //change page to the homepage
+                                builder: (context) => TrophiesScreen()));
+                      },
+                    ),
+                  ],
+                )),
             SizedBox(
               height: 20,
             ),
             Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               color: CustomColors.YellowOrange,
               child: ListTile(
                 title: Text("Logout"),
@@ -207,6 +210,8 @@ class Account extends StatelessWidget {
               ),
             ),
             Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
               color: CustomColors.YellowOrange,
               child: ListTile(
                 title: Text("Delete Account"),
@@ -215,7 +220,9 @@ class Account extends StatelessWidget {
                   final check = await context
                       .read<AuthenticationService>()
                       .deleteAccount();
+                  await DeleteUserFromFirestore();
                   print(check);
+
                   Navigator.push(context,
                       MaterialPageRoute(builder: (context) => Login()));
                 },

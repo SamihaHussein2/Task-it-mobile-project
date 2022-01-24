@@ -3,8 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:task_it/models/user.dart';
 //import 'package:task_it/models/user.dart';
 import 'package:task_it/provider/Auth_service.dart';
+import 'package:task_it/provider/Firestore_services.dart';
 import '/constants/custom_colors.dart';
 import '/screens/Intro/appbar_register.dart';
 import '/screens/Intro/login.dart';
@@ -211,17 +213,17 @@ class _SignupformState extends State<Signupform> {
                                 print(check.toString());
 
                                 if (check.toString() == "Signed Up") {
-                                  User? user =
-                                      FirebaseAuth.instance.currentUser;
-                                  FirebaseFirestore.instance
-                                      .collection("users")
-                                      .doc(user?.uid)
-                                      .set({
-                                    'uid': user?.uid,
-                                    'name': name.text,
-                                    'email': email.text,
-                                    'password': password.text
-                                  });
+                                  // User? user =
+                                  //     FirebaseAuth.instance.currentUser;
+                                  // FirebaseFirestore.instance
+                                  //     .collection("users")
+                                  //     .doc(user?.uid)
+                                  //     .set({
+                                  //   'ID': user?.uid.toString(),
+                                  //   'Full Name': name.text,
+                                  //   'email': email.text,
+                                  // });
+                                  AddUserInFirestore(name.text, email.text);
 
                                   Navigator.push(
                                       context,
