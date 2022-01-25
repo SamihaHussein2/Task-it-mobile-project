@@ -7,6 +7,7 @@ import 'package:task_it/models/user.dart';
 //import 'package:task_it/models/user.dart';
 import 'package:task_it/provider/Auth_service.dart';
 import 'package:task_it/provider/Firestore_services.dart';
+import 'package:task_it/provider/Firestore_storage.dart';
 import '/constants/custom_colors.dart';
 import '/screens/Intro/appbar_register.dart';
 import '/screens/Intro/login.dart';
@@ -223,8 +224,11 @@ class _SignupformState extends State<Signupform> {
                                   //   'Full Name': name.text,
                                   //   'email': email.text,
                                   // });
-                                  AddUserInFirestore(name.text, email.text);
-
+                                  var img = await DefaultImg();
+                                  AddUserInFirestore(
+                                      name.text, email.text, img);
+                                  print(img);
+                                  //AddUserImage(img);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(

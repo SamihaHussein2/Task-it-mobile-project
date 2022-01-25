@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/provider/Auth_service.dart';
+import 'package:task_it/provider/Firestore_services.dart';
 import '../navscreens/main_page.dart';
 import '/constants/custom_colors.dart';
 import 'appbar_register.dart';
@@ -121,6 +122,7 @@ class _LoginState extends State<Login> {
                             onPressed: () async {
                               //print(FirebaseAuth.instance.currentUser!.email);
                               if (_formKey.currentState!.validate()) {
+                                print(FirebaseAuth.instance.currentUser?.email);
                                 //working with Auth_service
                                 final check = await context
                                     .read<AuthenticationService>()
@@ -138,6 +140,7 @@ class _LoginState extends State<Login> {
                                     .showSnackBar(snackBar);
 
                                 if (check.toString() == "Signed in") {
+                                  GetID(FirebaseAuth.instance.currentUser?.uid);
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -205,25 +208,3 @@ class _LoginState extends State<Login> {
         ));
   }
 }
-
-// Widget _buildPopupDialog(BuildContext context, String text) {
-//   return new AlertDialog(
-//     title: const Text('Popup example'),
-//     content: new Column(
-//       mainAxisSize: MainAxisSize.min,
-//       crossAxisAlignment: CrossAxisAlignment.start,
-//       children: <Widget>[
-//         Text(text),
-//       ],
-//     ),
-//     actions: <Widget>[
-//       new FlatButton(
-//         onPressed: () {
-//           Navigator.of(context).pop();
-//         },
-//         textColor: Theme.of(context).primaryColor,
-//         child: const Text('Close'),
-//       ),
-//     ],
-//   );
-// }
