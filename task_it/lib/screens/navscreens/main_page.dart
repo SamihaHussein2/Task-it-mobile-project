@@ -9,6 +9,7 @@ import '/screens/add_new_task.dart';
 import '/screens/navscreens/tasks_list.dart';
 import '/screens/leaderboard/leaderboard.dart';
 import '/screens/user_account.dart';
+import '/screens/search_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -71,6 +72,18 @@ class _MainPageState extends State<MainPage> {
             return Text("user");
           },
         ),
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.search,
+              color: Color(0xFF1E4E5F),
+            ),
+            iconSize: 30,
+            onPressed: () {
+              showSearch(context: context, delegate: SearchPage());
+            },
+          )
+        ],
       ),
       drawer: Drawer(
           child: ListView(
