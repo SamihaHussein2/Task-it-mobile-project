@@ -2,23 +2,24 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:task_it/models/task.dart';
 
-class TasksProvider extends ChangeNotifier {
+class TasksProvider with ChangeNotifier {
   //List of note
-  List<Task> _notes = [];
+  final List<Task> _tasks = [];
 
-  List<Task> get getNotes {
-    return _notes;
+  UnmodifiableListView<Task> get getTasks => UnmodifiableListView(_tasks);
+
+  void createTask(Task task) {
+    _tasks.add(task);
+    notifyListeners();
   }
 
-  TasksProvider() {
-    addNewNote('First Note', 'First Note Description');
-    addNewNote('second Note', 'Description 2');
+  void toggleTask(Task task) {
+    task.toggleComplete();
+    notifyListeners();
   }
 
-  void addNewNote(String title, String description) {
-    //Note object
-    Task note = Task(title, description);
-    _notes.add(note);
+  void deleteTask(Task task) {
+    _tasks.remove(task);
     notifyListeners();
   }
 }

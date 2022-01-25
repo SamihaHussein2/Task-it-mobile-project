@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/Auth_wrapper.dart';
 import 'package:task_it/provider/Auth_service.dart';
+import 'package:task_it/provider/tasks_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +27,9 @@ class MyApp extends StatelessWidget {
           create: (context) =>
               context.read<AuthenticationService>().authStateChanges,
           initialData: null,
+        ),
+        ChangeNotifierProvider(
+          create: (context) => TasksProvider(),
         )
       ],
       child: const MaterialApp(

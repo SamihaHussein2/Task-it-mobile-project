@@ -3,17 +3,21 @@ import 'package:flutter/material.dart';
 
 class Task {
   String title;
-  String description;
+  late String description;
+  bool completed;
 
-  Task( this.title, this.description);
+  Task({required this.title, this.completed = false});
 
+  void toggleComplete() {
+    completed = !completed;
+  }
   // static Task fromJson(Map<String,dynamic> json) => Task (
   //   'title' : json['title'],
   //   'description': json['description']
   // );
 
-  Map<String,dynamic> toJson() => {
-    'title' : title,
-    'description': description,
-  };
+  // Map<String,dynamic> toJson() => {
+  //   'title' : title,
+  //   'description': description,
+  // };
 }

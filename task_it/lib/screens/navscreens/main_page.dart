@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+<<<<<<< Updated upstream
 import 'package:task_it/provider/Auth_service.dart';
 import 'package:task_it/screens/Intro/login.dart';
+=======
+import 'package:task_it/provider/tasks_provider.dart';
+>>>>>>> Stashed changes
 import '/screens/navscreens/homepage/homepage.dart';
 import '/constants/custom_colors.dart';
 import '/screens/add_new_task.dart';
-import '/screens/navscreens/tasks_list.dart';
+import 'task/tasks_list.dart';
 import '/screens/leaderboard/leaderboard.dart';
 import '/screens/user_account.dart';
 import '/screens/search_page.dart';
@@ -25,7 +29,7 @@ class _MainPageState extends State<MainPage> {
   String appURL =
       "https://play.google.com/store/apps/details?id=com.miu.taskit";
   int currentIndex = 0;
-  List navBarPages = [Homepage(), TasksListScreen()];
+  List navBarPages = [Homepage(), TaskListScreen()];
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +233,7 @@ class _MainPageState extends State<MainPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _show(context),
+        onPressed: () => _newTaskDialog(context),
         child: Icon(Icons.add_rounded, size: 40),
         elevation: 30,
         backgroundColor: CustomColors.Midnight,
@@ -237,18 +241,50 @@ class _MainPageState extends State<MainPage> {
     );
   }
 
-  void _show(BuildContext ctx) {
-    showMaterialModalBottomSheet(
-        // add button add w add task fi al set state?
-        elevation: 10,
-        backgroundColor: Colors.amber,
-        context: ctx,
-        builder: (ctx) => Container(
-              //width: 100,
-              height: 800,
-              color: Colors.white,
-              alignment: Alignment.center,
-              child: AddTaskForm(),
-            ));
+  void _newTaskDialog(BuildContext context) {
+    TextEditingController _title = TextEditingController();
+    TextEditingController _description = TextEditingController();
+
+    Widget createButton = TextButton(
+      child: Text("Create Task"),
+      onPressed: () {
+        // Provider.of<TasksProvider>(context, listen: false)
+        //     .createTask(_title.text, _description.text);
+        Navigator.of(context).pop();
+      },
+    );
+
+    AlertDialog alertDialog = AlertDialog(
+      title: Text("Add a new task"),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextField(
+            controller: _title,
+            decoration: InputDecoration(hintText: "Enter Title"),
+          ),
+          TextField(
+            controller: _description,
+            decoration: InputDecoration(hintText: "Enter Description"),
+          ),
+        ],
+      ),
+      actions: [
+        createButton,
+      ],
+    );
+
+    // showMaterialModalBottomSheet(
+    //     // add button add w add task fi al set state?
+    //     elevation: 10,
+    //     backgroundColor: Colors.amber,
+    //     context: ctx,
+    //     builder: (ctx) => Container(
+    //           //width: 100,
+    //           height: 800,
+    //           color: Colors.white,
+    //           alignment: Alignment.center,
+    //           child: AddTaskScreen(),
+    //         ));
   }
 }

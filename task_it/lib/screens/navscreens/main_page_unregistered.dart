@@ -1,11 +1,12 @@
+// ignore_for_file: unnecessary_new
+
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:share_plus/share_plus.dart';
+import '/screens/navscreens/settings.dart';
 import '/screens/Intro/login.dart';
 import '/screens/navscreens/homepage/homepage.dart';
 import '/constants/custom_colors.dart';
-import '/screens/add_new_task.dart';
-import '/screens/navscreens/tasks_list.dart';
+import 'task/tasks_list.dart';
 
 class MainPageUnregistered extends StatefulWidget {
   const MainPageUnregistered({Key? key}) : super(key: key);
@@ -15,10 +16,8 @@ class MainPageUnregistered extends StatefulWidget {
 }
 
 class _MainPageUnregisteredState extends State<MainPageUnregistered> {
-  String appURL =
-      "https://play.google.com/store/apps/details?id=com.miu.taskit";
-  int currentIndex = 0;
-  List navBarPages = [Homepage(), TasksListScreen()];
+  int currentIndex = 1;
+  List navBarPages = [TaskListScreen(), Homepage(), Settings()];
 
   @override
   Widget build(BuildContext context) {
@@ -77,53 +76,26 @@ class _MainPageUnregisteredState extends State<MainPageUnregistered> {
                   new MaterialPageRoute(builder: (context) => Login())),
             },
           ),
-
-          // ListTile(
-          //   leading: Icon(Icons.account_circle_rounded),
-          //   title: Text("Profile"),
-          //   onTap: () => {
-          //     Navigator.push(context,
-          //         new MaterialPageRoute(builder: (context) => Account()))
-          //   },
-          // ),
-          // ListTile(
-          //   leading: Icon(Icons.notifications_active_rounded),
-          //   title: Text("Notifications"),
-          // ),
-          // ListTile(
-          //   leading: Icon(Icons.leaderboard_rounded),
-          //   title: Text("Leaderboard"),
-          //   onTap: () => {
-          //     Navigator.push(
-          //         context,
-          //         new MaterialPageRoute(
-          //             builder: (context) => LeaderBoardScreen()))
-          //   },
-          // ),
           Divider(
             thickness: 1,
             height: 90,
             color: Colors.grey,
           ),
-          ListTile(
-            leading: Container(
-              child: ElevatedButton.icon(
-                icon: Icon(Icons.share_rounded),
-                onPressed: () {
-                  Share.share(appURL);
-                },
-                label: Text("Share App"),
-                style: ElevatedButton.styleFrom(
-                    shape: new RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(20.0)),
-                    padding: EdgeInsets.all(20),
-                    primary: CustomColors.Midnight),
-              ),
-            ),
-          ),
           // ListTile(
-          //   leading: Icon(Icons.toggle_on_rounded),
-          //   title: Text("Theme"),
+          //   leading: Container(
+          //     child: ElevatedButton.icon(
+          //       icon: Icon(Icons.share_rounded),
+          //       onPressed: () {
+          //         Share.share(appURL);
+          //       },
+          //       label: Text("Share App"),
+          //       style: ElevatedButton.styleFrom(
+          //           shape: new RoundedRectangleBorder(
+          //               borderRadius: new BorderRadius.circular(20.0)),
+          //           padding: EdgeInsets.all(20),
+          //           primary: CustomColors.Midnight),
+          //     ),
+          //   ),
           // ),
         ],
       )),
@@ -146,43 +118,48 @@ class _MainPageUnregisteredState extends State<MainPageUnregistered> {
                   topLeft: Radius.circular(20), topRight: Radius.circular(30)),
               child: BottomNavigationBar(
                 selectedItemColor: CustomColors.Midnight,
+                showUnselectedLabels: false,
                 currentIndex: currentIndex,
                 onTap: (index) => setState(() => currentIndex = index),
-                items: [
+                items: const [
+                  BottomNavigationBarItem(
+                    label: "Tasks",
+                    icon: Icon(Icons.apps_rounded, size: 30),
+                  ),
                   BottomNavigationBarItem(
                     label: "Home",
                     icon: Icon(Icons.home_rounded, size: 30),
                   ),
                   BottomNavigationBarItem(
-                    label: "Tasks",
-                    icon: Icon(Icons.apps_rounded, size: 30),
+                    label: "Settings",
+                    icon: Icon(Icons.more_horiz, size: 30),
                   ),
                 ],
               ),
             )),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _show(context),
-        child: Icon(Icons.add_rounded, size: 40),
-        elevation: 30,
-        backgroundColor: CustomColors.Midnight,
-      ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => _newTaskDialog(context),
+      //   child: Icon(Icons.add_rounded, size: 40),
+      //   elevation: 30,
+      //   backgroundColor: CustomColors.Midnight,
+      // ),
     );
   }
 
-  void _show(BuildContext ctx) {
-    showMaterialModalBottomSheet(
-        // add button add w add task fi al set state?
-        elevation: 10,
-        backgroundColor: Colors.amber,
-        context: ctx,
-        builder: (ctx) => Container(
-              //width: 100,
-              height: 800,
-              color: Colors.white,
-              alignment: Alignment.center,
-              child: AddTaskForm(),
-            ));
-  }
+  // void _newTaskDialog(BuildContext context) {
+  //   showMaterialModalBottomSheet(
+  //       // add button add w add task fi al set state?
+  //       elevation: 10,
+  //       backgroundColor: Colors.amber,
+  //       context: context,
+  //       builder: (ctx) => Container(
+  //             //width: 100,
+  //             height: 800,
+  //             color: Colors.white,
+  //             alignment: Alignment.center,
+  //             child: TasksListScreen(),
+  //           ));
+  // }
 }
