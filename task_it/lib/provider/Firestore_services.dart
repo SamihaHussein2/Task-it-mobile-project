@@ -20,8 +20,14 @@ Future<void> setImg(String PhotoURL) async {
 
 Future<void> AddUserInFirestore(
     String displayName, String email, String img) async {
-  users.doc(uid).set(
-      {'Full Name': displayName, 'ID': uid, 'email': email, 'Photo URL': img});
+  var score = 0;
+  users.doc(uid).set({
+    'Full Name': displayName,
+    'ID': uid,
+    'email': email,
+    'Photo URL': img,
+    'Score': score
+  });
   //users.doc(uid).add({'Full Name': displayName, 'ID': uid, 'email': email});
   return;
 }

@@ -2,7 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:task_it/provider/Auth_service.dart';
+import 'package:task_it/screens/Intro/login.dart';
 import '/screens/navscreens/homepage/homepage.dart';
 import '/constants/custom_colors.dart';
 import '/screens/add_new_task.dart';
@@ -152,6 +155,15 @@ class _MainPageState extends State<MainPage> {
                   context,
                   new MaterialPageRoute(
                       builder: (context) => LeaderBoardScreen()))
+            },
+          ),
+          ListTile(
+            leading: Icon(Icons.logout_sharp),
+            title: Text("Logout"),
+            onTap: () {
+              final check = context.read<AuthenticationService>().signOut();
+              Navigator.push(context,
+                  new MaterialPageRoute(builder: (context) => Login()));
             },
           ),
           Divider(
