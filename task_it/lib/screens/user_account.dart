@@ -1,19 +1,23 @@
+import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/provider/Firestore_services.dart';
+import 'package:task_it/provider/Firestore_storage.dart';
 import 'package:task_it/screens/trophies.dart';
 import '../provider/Auth_service.dart';
 import '/constants/custom_colors.dart';
-//import 'package:image_picker/image_picker.dart';
-import '/spalsh.dart';
 import 'Intro/login.dart';
 import 'navscreens/main_page.dart';
 
-class Account extends StatelessWidget {
-  //const account({Key? key}) : super(key: key);
+class Account extends StatefulWidget {
+  @override
+  State<Account> createState() => _AccountState();
+}
 
+class _AccountState extends State<Account> {
+  //const account({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final userID = FirebaseAuth.instance.currentUser?.uid;
@@ -58,10 +62,38 @@ class Account extends StatelessWidget {
                       children: [
                         Stack(
                           children: [
-                            CircleAvatar(
-                              radius: 50,
-                              backgroundImage:
-                                  AssetImage("assets/avatar/avatar.jpg"),
+                            FutureBuilder<DocumentSnapshot>(
+                              future: users.doc(userID).get(),
+                              builder: (BuildContext context,
+                                  AsyncSnapshot<DocumentSnapshot> snapshot) {
+                                if (snapshot.hasError) {
+                                  return Text("Something went wrong");
+                                }
+
+                                if (snapshot.hasData &&
+                                    !snapshot.data!.exists) {
+                                  return Text("Document does not exist");
+                                }
+
+                                if (snapshot.connectionState ==
+                                    ConnectionState.done) {
+                                  Map<String, dynamic> data = snapshot.data!
+                                      .data() as Map<String, dynamic>;
+                                  return CircleAvatar(
+                                    backgroundColor: CustomColors.Midnight,
+                                    radius: 50,
+                                    child: ClipOval(
+                                        child: new SizedBox(
+                                            width: 90.0,
+                                            height: 90.0,
+                                            child: Image.network(
+                                              data['Photo URL'],
+                                              fit: BoxFit.fill,
+                                            ))),
+                                  );
+                                }
+                                return Text("loading");
+                              },
                             ),
                             Align(
                               alignment: Alignment.bottomRight,
@@ -72,10 +104,67 @@ class Account extends StatelessWidget {
                                 decoration: BoxDecoration(
                                     color: CustomColors.Midnight,
                                     shape: BoxShape.circle),
-                                child: Icon(
-                                  Icons.edit,
+                                child: IconButton(
+                                  icon: Icon(Icons.camera_alt_rounded),
                                   color: CustomColors.YellowOrange,
-                                  size: 17,
+                                  iconSize: 14,
+                                  onPressed: () {
+                                    // final snackBarGallery = SnackBar(
+                                    //   action: SnackBarAction(
+                                    //     onPressed: () {
+                                    //       uploadImgGallery();
+                                    //     },
+                                    //     label: '',
+                                    //   ),
+                                    //   content: Text('Upload from Gallery'),
+                                    // );
+                                    // final snackBarCamera = SnackBar(
+                                    //   action: SnackBarAction(
+                                    //     onPressed: () {
+                                    //       uploadImg();
+                                    //     },
+                                    //     label: '',
+                                    //   ),
+                                    //   content: Text('Upload from Camera'),
+                                    // );
+                                    // ScaffoldMessenger.of(context)
+                                    //     .showSnackBar(snackBarGallery);
+                                    // ScaffoldMessenger.of(context)
+                                    //     .showSnackBar(snackBarCamera);
+                                    // print(FirebaseAuth
+                                    //     .instance.currentUser?.email);
+                                    //uploadImg();
+                                    showModalBottomSheet(
+                                      enableDrag: false,
+                                      isDismissible: false,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(24),
+                                          topRight: Radius.circular(24),
+                                        ),
+                                      ),
+                                      context: context,
+                                      builder: (context) => Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: <Widget>[
+                                          ListTile(
+                                            leading: Icon(Icons.camera),
+                                            title: Text('Take Photo'),
+                                            onTap: () {
+                                              uploadImg();
+                                            },
+                                          ),
+                                          ListTile(
+                                            leading: Icon(
+                                                Icons.photo_library_rounded),
+                                            title:
+                                                Text('Select From Camera Roll'),
+                                            onTap: () => {uploadImgGallery()},
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
                             )
@@ -130,11 +219,11 @@ class Account extends StatelessWidget {
                     child: Center(
                         child: MaterialButton(
                       onPressed: () {
-                        Navigator.pop(
-                            context,
-                            MaterialPageRoute(
-                                //after validation goes to homepage
-                                builder: (context) => Splash()));
+                        // Navigator.pop(
+                        //     context,
+                        //     MaterialPageRoute(
+                        //         //after validation goes to homepage
+                        //         builder: (context) => Splash()));
                       },
                       child: Text(
                         "Edit Profile",
@@ -232,3 +321,61 @@ class Account extends StatelessWidget {
         ));
   }
 }
+
+void _show(BuildContext ctx) {
+  mainBottomSheet(BuildContext context) {
+    _camera() {
+      uploadImg();
+    }
+
+    _gallery() {
+      uploadImgGallery();
+    }
+
+    ListTile _createTile(
+        BuildContext context, String name, IconData icon, Function action) {
+      return ListTile(
+        leading: Icon(icon),
+        title: Text(name),
+        onTap: () {
+          //Navigator.pop(context);
+          action();
+        },
+      );
+    }
+
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              _createTile(context, 'Take Photo', Icons.message, _camera),
+              _createTile(context, 'Select From Camera Roll', Icons.camera_alt,
+                  _gallery),
+            ],
+          );
+        });
+  }
+}
+
+// Widget _buildPopupDialog(BuildContext context, String text) {
+//   return new AlertDialog(
+//     title: const Text('Edit Profile'),
+//     content: new Column(
+//       mainAxisSize: MainAxisSize.min,
+//       crossAxisAlignment: CrossAxisAlignment.start,
+//       children: <Widget>[Text("Name:"), TextField()],
+//     ),
+//     actions: <Widget>[
+//       new FlatButton(
+//         onPressed: () {
+//           Navigator.of(context).pop();
+//         },
+//         textColor: Theme.of(context).primaryColor,
+//         child: const Text('Close'),
+//       ),
+//     ],
+//   );
+// }
+

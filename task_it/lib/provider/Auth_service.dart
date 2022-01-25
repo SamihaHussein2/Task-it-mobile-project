@@ -9,13 +9,15 @@ class AuthenticationService {
   Stream<User?> get authStateChanges => _firebaseAuth.idTokenChanges();
 
   Future<void> signOut() async {
-    await _firebaseAuth.signOut();
+    GetID(uid);
+    await FirebaseAuth.instance.signOut();
   }
 
   Future<String?> signIn(String email, String password) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+      GetID(uid);
       return "Signed in";
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

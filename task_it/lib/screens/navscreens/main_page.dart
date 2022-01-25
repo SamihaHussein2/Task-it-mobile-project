@@ -98,8 +98,16 @@ class _MainPageState extends State<MainPage> {
                       accountName: Text('${data['Full Name']}'),
                       accountEmail: Text('${data['email']}'),
                       currentAccountPicture: CircleAvatar(
+                        backgroundColor: CustomColors.Midnight,
                         radius: 50,
-                        backgroundImage: AssetImage("assets/avatar/avatar.jpg"),
+                        child: ClipOval(
+                            child: new SizedBox(
+                                width: 90.0,
+                                height: 90.0,
+                                child: Image.network(
+                                  data['Photo URL'],
+                                  fit: BoxFit.fill,
+                                ))),
                       ),
                     ),
                   ],
