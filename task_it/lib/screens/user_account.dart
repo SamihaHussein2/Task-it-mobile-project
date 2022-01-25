@@ -209,28 +209,6 @@ class _AccountState extends State<Account> {
                   SizedBox(
                     height: 10,
                   ),
-                  Container(
-                    height: 30,
-                    width: 130,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: CustomColors.Midnight,
-                    ),
-                    child: Center(
-                        child: MaterialButton(
-                      onPressed: () {
-                        // Navigator.pop(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         //after validation goes to homepage
-                        //         builder: (context) => Splash()));
-                      },
-                      child: Text(
-                        "Edit Profile",
-                        style: TextStyle(color: CustomColors.SeaShell),
-                      ),
-                    )),
-                  )
                 ],
               ),
             ),
