@@ -209,7 +209,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.4"
-<<<<<<< Updated upstream
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -217,7 +216,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
-=======
   flutter_slidable:
     dependency: "direct main"
     description:
@@ -225,7 +223,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
->>>>>>> Stashed changes
   flutter_test:
     dependency: "direct dev"
     description: flutter
