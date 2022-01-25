@@ -79,7 +79,12 @@ class SearchPage extends SearchDelegate {
                           color: Color(0xFF1E4E5F),
                         ),
                         iconSize: 30,
-                        onPressed: () {},
+                        onPressed: () {
+                          const snackBar = SnackBar(
+                            content: Text('Friend Added!'),
+                          );
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
                       ));
                 })
               ]);
