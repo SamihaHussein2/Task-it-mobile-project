@@ -26,79 +26,15 @@ class _MainPageUnregisteredState extends State<MainPageUnregistered> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.dehaze_rounded,
-                color: CustomColors.Midnight,
-              ),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
         backgroundColor: CustomColors.Cultured,
         elevation: 0,
         title: Row(
           children: [
-            // SizedBox(width: 10),
             Text('Hello, User!',
                 style: TextStyle(color: CustomColors.Midnight, fontSize: 20))
           ],
         ),
       ),
-      drawer: Drawer(
-          child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-              decoration: BoxDecoration(color: CustomColors.Midnight),
-              child: Text("Welcome To TaskIt!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      height: 5, fontSize: 20, color: CustomColors.Cultured))),
-          Divider(
-            color: Colors.white,
-          ),
-          ListTile(
-            leading: Icon(
-              Icons.login,
-              size: 30,
-              color: CustomColors.Midnight,
-            ),
-            title: Text("Login/Register",
-                style: TextStyle(
-                    height: 1, fontSize: 20, color: CustomColors.Midnight)),
-            onTap: () => {
-              Navigator.push(context,
-                  new MaterialPageRoute(builder: (context) => Login())),
-            },
-          ),
-          Divider(
-            thickness: 1,
-            height: 90,
-            color: Colors.grey,
-          ),
-          // ListTile(
-          //   leading: Container(
-          //     child: ElevatedButton.icon(
-          //       icon: Icon(Icons.share_rounded),
-          //       onPressed: () {
-          //         Share.share(appURL);
-          //       },
-          //       label: Text("Share App"),
-          //       style: ElevatedButton.styleFrom(
-          //           shape: new RoundedRectangleBorder(
-          //               borderRadius: new BorderRadius.circular(20.0)),
-          //           padding: EdgeInsets.all(20),
-          //           primary: CustomColors.Midnight),
-          //     ),
-          //   ),
-          // ),
-        ],
-      )),
       body: navBarPages[currentIndex],
       bottomNavigationBar: new Theme(
         data: Theme.of(context),
@@ -138,28 +74,6 @@ class _MainPageUnregisteredState extends State<MainPageUnregistered> {
               ),
             )),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => _newTaskDialog(context),
-      //   child: Icon(Icons.add_rounded, size: 40),
-      //   elevation: 30,
-      //   backgroundColor: CustomColors.Midnight,
-      // ),
     );
   }
-
-  // void _newTaskDialog(BuildContext context) {
-  //   showMaterialModalBottomSheet(
-  //       // add button add w add task fi al set state?
-  //       elevation: 10,
-  //       backgroundColor: Colors.amber,
-  //       context: context,
-  //       builder: (ctx) => Container(
-  //             //width: 100,
-  //             height: 800,
-  //             color: Colors.white,
-  //             alignment: Alignment.center,
-  //             child: TasksListScreen(),
-  //           ));
-  // }
 }

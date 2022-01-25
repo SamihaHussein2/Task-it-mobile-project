@@ -4,15 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-<<<<<<< Updated upstream
 import 'package:task_it/provider/Auth_service.dart';
 import 'package:task_it/screens/Intro/login.dart';
-=======
-import 'package:task_it/provider/tasks_provider.dart';
->>>>>>> Stashed changes
 import '/screens/navscreens/homepage/homepage.dart';
 import '/constants/custom_colors.dart';
-import '/screens/add_new_task.dart';
 import 'task/tasks_list.dart';
 import '/screens/leaderboard/leaderboard.dart';
 import '/screens/user_account.dart';
@@ -28,8 +23,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   String appURL =
       "https://play.google.com/store/apps/details?id=com.miu.taskit";
-  int currentIndex = 0;
-  List navBarPages = [Homepage(), TaskListScreen()];
+  int currentIndex = 1;
+  List navBarPages = [TaskListScreen(), Homepage(), Settings()];
 
   @override
   Widget build(BuildContext context) {
@@ -191,10 +186,6 @@ class _MainPageState extends State<MainPage> {
               ),
             ),
           ),
-          // ListTile(
-          //   leading: Icon(Icons.toggle_on_rounded),
-          //   title: Text("Theme"),
-          // ),
         ],
       )),
       body: navBarPages[currentIndex],
@@ -220,23 +211,20 @@ class _MainPageState extends State<MainPage> {
                 onTap: (index) => setState(() => currentIndex = index),
                 items: [
                   BottomNavigationBarItem(
+                    label: "Tasks",
+                    icon: Icon(Icons.apps_rounded, size: 30),
+                  ),
+                  BottomNavigationBarItem(
                     label: "Home",
                     icon: Icon(Icons.home_rounded, size: 30),
                   ),
                   BottomNavigationBarItem(
-                    label: "Tasks",
-                    icon: Icon(Icons.apps_rounded, size: 30),
+                    label: "Settings",
+                    icon: Icon(Icons.more_horiz, size: 30),
                   ),
                 ],
               ),
             )),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _newTaskDialog(context),
-        child: Icon(Icons.add_rounded, size: 40),
-        elevation: 30,
-        backgroundColor: CustomColors.Midnight,
       ),
     );
   }

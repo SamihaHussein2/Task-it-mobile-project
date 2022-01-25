@@ -4,7 +4,6 @@ import '/screens/lists_page.dart';
 import '/screens/user_account.dart';
 import '/constants/custom_colors.dart';
 import '/screens/navscreens/homepage/widgets/default_tasks.dart';
-import '/screens/navscreens/homepage/widgets/unlock_more_features.dart';
 import '/screens/add_new_task.dart';
 
 class Homepage extends StatefulWidget {
@@ -22,10 +21,9 @@ class _HomepageState extends State<Homepage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          UnlockMoreFeatures(),
           Container(
             padding: EdgeInsets.all(15),
-            child: Text('Tasks',
+            child: Text('Default Tasks',
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
           ),
           Expanded(

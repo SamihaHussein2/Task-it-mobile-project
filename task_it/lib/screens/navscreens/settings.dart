@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:launch_review/launch_review.dart';
+import '/screens/Intro/login.dart';
 
 import '/constants/custom_colors.dart';
 
@@ -15,7 +15,8 @@ class Settings extends StatelessWidget {
       ListTile(
         leading: Icon(Icons.login, color: CustomColors.Midnight),
         onTap: () {
-          Share.share(appURL);
+          Navigator.push(
+              context, new MaterialPageRoute(builder: (context) => Login()));
         },
         title: const Text("Login/Register"),
       ),
@@ -25,13 +26,6 @@ class Settings extends StatelessWidget {
           Share.share(appURL);
         },
         title: Text("Share App"),
-      ),
-      ListTile(
-        leading: Icon(Icons.star_border_outlined, color: CustomColors.Midnight),
-        onTap: () {
-          LaunchReview.launch(androidAppId: "com.miu.taskit");
-        },
-        title: Text("Rate App on PlayStore"),
       ),
     ]));
   }

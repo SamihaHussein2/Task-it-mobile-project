@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:task_it/constants/custom_colors.dart';
 import 'package:task_it/models/task.dart';
