@@ -80,10 +80,7 @@ class _MainPageState extends State<MainPage> {
             ),
             iconSize: 30,
             onPressed: () {
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => SearchPage()),
-              // );
+              showSearch(context: context, delegate: SearchPage());
             },
           )
         ],

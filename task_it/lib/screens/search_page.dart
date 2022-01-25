@@ -1,11 +1,13 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:task_it/screens/user_account.dart';
+import '/screens/navscreens/main_page.dart';
 
 class SearchPage extends SearchDelegate {
-  CollectionReference _firebaseFirestore =
+  final userID = FirebaseAuth.instance.currentUser?.uid;
+  final CollectionReference _firebaseFirestore =
       FirebaseFirestore.instance.collection("users");
 
   @override
@@ -25,7 +27,8 @@ class SearchPage extends SearchDelegate {
     return IconButton(
       icon: Icon(Icons.arrow_back),
       onPressed: () {
-        Navigator.of(context).pop();
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => MainPage()));
       },
     );
   }
@@ -59,18 +62,25 @@ class SearchPage extends SearchDelegate {
                             .contains(query.toLowerCase()))
                     .map((QueryDocumentSnapshot<Object?> data) {
                   final String name = data.get('Full Name');
-                  final String image = data['Photo'];
+                  //final String image = data['Photo'];
 
                   return ListTile(
-                    onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Account()));
-                    },
-                    title: Text(name),
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(image),
-                    ),
-                  );
+                      onTap: () {
+                        // Navigator.push(context,
+                        //     MaterialPageRoute(builder: (context) => Account()));
+                      },
+                      title: Text(name),
+                      // leading: CircleAvatar(
+                      //   backgroundImage: NetworkImage(image),
+                      // ),
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.add,
+                          color: Color(0xFF1E4E5F),
+                        ),
+                        iconSize: 30,
+                        onPressed: () {},
+                      ));
                 })
               ]);
             }
